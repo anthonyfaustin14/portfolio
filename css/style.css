@@ -1,52 +1,51 @@
 @font-face {
-    font-family: 'Kiwi Soda';
-    src: url('../fonts/kiwi-soda.ttf') format('truetype');
-  }
-  @font-face {
-    font-family: 'Pixel Georgia';
-    src: url('../fonts/pixel-georgia.ttf') format('truetype');
-  }
-  
-  body {
-    margin: 0;
-    color: #fff;
-    font-family: 'Pixel Georgia', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .nav-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 8px; 
-  }
-  
-  
-  .logo {
-    width: 200px;
-    height: 304px;
-    object-fit: contain;
-    margin-bottom: -50px;
-  }
-  
-  .name {
-    font-family: 'Kiwi Soda', sans-serif;
-    font-size: 50px;
-    color: #61457A;
-    margin: 0;
-  }
-  
-  .time {
-    font-size: 20px;
-    color: #7B9A2E;
-    margin: 4px 0 20px;
-  }
-  
-  
+  font-family: 'Kiwi Soda';
+  src: url('../fonts/kiwi-soda.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Pixel Georgia';
+  src: url('../fonts/pixel-georgia.ttf') format('truetype');
+}
+
+body {
+  margin: 0;
+  color: #fff;
+  font-family: 'Pixel Georgia', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.nav-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px; 
+}
+
+.logo {
+  width: clamp(140px, 40vw, 200px);
+  height: auto;
+  object-fit: contain;
+  margin-bottom: -20px; 
+}
+
+.name {
+  font-family: 'Kiwi Soda', sans-serif;
+  font-size: clamp(28px, 8.5vw, 50px);
+  line-height: 0.95; 
+  color: #61457A;
+  margin: 0;
+}
+
+.time {
+  font-size: 20px;
+  color: #7B9A2E;
+  margin: 4px 0 20px;
+}
+
 .nav-links {
   display: flex;
   flex-direction: column;
@@ -96,81 +95,68 @@
   opacity: 0;
 }
 
-  .social-icons {
-    display: flex;
-    gap: 1.2rem; 
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 8px; 
-  }
-  .social-icons img {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
-  }
-  
-  
-#loading-screen {
-    position: fixed;
-    inset: 0;
-    background-color: #ffffff; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 0.8s ease;
-  }
-  
-  .loading-inner {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  
-  .loading-logo {
-    width: 64px;
-    height: auto;
-  }
-  
-  .loading-name {
-    font-family: 'Kiwi Soda', sans-serif;
-    font-size: 32px;
-    animation: cycleTextColor 10s ease-in-out infinite;
-  }
-  
-  @keyframes cycleTextColor {
-    0%   { color: #61457A; }
-    33%  { color: #7B9A2E; }
-    66%  { color: #737373; }
-    100% { color: #61457A; }
-  }
-  
-  .loading-name {
-    font-family: 'Kiwi Soda', sans-serif;
-    font-size: 100px;
-    animation: cycleTextColor 10s ease-in-out infinite;
-    line-height: 1;
-  }
+.social-icons {
+  display: flex;
+  gap: 1.2rem; 
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px; 
+}
+.social-icons img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+.social-icons img:hover {
+  transform: scale(1.25);
+  transition: transform 0.1s ease-in-out;
+}
 
-  .loading-logo {
-    width: 120px; 
-    height: auto;
-  }
-  
-  @keyframes flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-      opacity: 1;
-    }
-    20%, 22%, 24%, 55% {
-      opacity: 0.2;
-    }
-  }
-  
-  .loading-name {
-    animation: cycleTextColor 10s ease-in-out infinite, flicker 2s linear 1;
-  }
-  .social-icons img:hover {
-    transform: scale(1.25);
-    transition: transform 0.1s ease-in-out;
-  }
-  
+/* === Loading Screen === */
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  background-color: #ffffff; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.8s ease;
+}
+
+.loading-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.loading-logo {
+  width: 120px; 
+  height: auto;
+}
+
+.loading-name {
+  font-family: 'Kiwi Soda', sans-serif;
+  font-size: 100px;
+  animation: cycleTextColor 10s ease-in-out infinite, flicker 2s linear 1;
+  line-height: 1;
+}
+
+@keyframes cycleTextColor {
+  0%   { color: #61457A; }
+  33%  { color: #7B9A2E; }
+  66%  { color: #737373; }
+  100% { color: #61457A; }
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 22%, 24%, 55% { opacity: 0.2; }
+}
+
+/* === Mobile Responsiveness === */
+@media (max-width: 480px) {
+  .time { font-size: 16px; }
+  .nav-wrapper { gap: 2px; }
+  .logo { margin-bottom: -12px; }
+}
