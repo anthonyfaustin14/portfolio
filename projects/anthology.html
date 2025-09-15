@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zine Anthology</title>
+  <link rel="stylesheet" href="../css/anthology.css" />
+</head>
+<body>
+  <div class="project-nav-dropdown-wrapper">
+    <button id="dropdown-toggle" class="dropdown-toggle">v</button>
+    <div id="project-menu" class="project-menu">
+      <a href="themup.html" class="project-menu-item">
+        <img src="../img/themup.gif" alt="The Mup" class="project-menu-thumb" />
+      </a>
+      <!-- dropdown -->
+      <a href="ripdjscrew.html" class="project-menu-item">
+        <img src="../img/djscrew_purple_thumb.jpg" alt="DJ Screw" class="project-menu-thumb" />
+      </a>
+      <a href="thefog.html" class="project-menu-item">
+        <img src="../img/thefog.gif" alt="The Fog" class="project-menu-thumb" />
+      </a>
+      <a href="1948.html" class="project-menu-item">
+        <img src="../img/1948_thumb.jpg" alt="1948" class="project-menu-thumb" />
+      </a>
+      <a href="bembo.html" class="project-menu-item">
+        <img src="../img/bembo_thumb.png" alt="Bembo Project" class="project-menu-thumb" />
+      </a>
+      <a href="low-bit.html" class="project-menu-item">
+        <img src="../img/low_bit_thumb.gif" alt="Low-Bit Legacies" class="project-menu-thumb" />
+      </a>
+
+      <a href="anthology.html" class="project-menu-item current">
+        <img src="../img/anthology_cover_thumb.jpg" alt="Zine Anthology" class="project-menu-thumb" />
+      </a>
+      
+      <a href="art-comp.html" class="project-menu-item">
+        <img src="../img/art_comp1_thumb.jpg" alt="Art Comp" class="project-menu-thumb" />
+      </a>
+    </div>
+  </div>
+
+  <div class="nav-wrapper">
+    <h1 class="site-name">
+      <a href="../index.html" class="site-name-link">Anthony Faustin</a>
+    </h1>
+    <div class="logo-nav-row">
+      <a href="../index.html" class="logo-link">
+        <img src="../img/logo.png" alt="Anthony Faustin Avatar" class="logo" />
+      </a>
+      <nav class="nav-links">
+        <a href="../projects/projects.html" class="nav-link active">projects</a>
+        <a href="../about/about.html" class="nav-link">about</a>
+        <a href="mailto:anthonyfaustin14@gmail.com" class="nav-link">contact</a>
+        <a href="../inspo/inspo.html" class="nav-link">inspo</a>
+      </nav>
+    </div>
+  </div>
+
+  <h1 class="page-title">Zine Anthology</h1>
+
+  <div class="zine-wrapper">
+    <div class="zine-reader">
+      <img src="../img/anthology_cover_thumb.jpg" alt="Zine Page" class="zine-page-image" id="zineImage" />
+    </div>
+    
+    <div class="zine-controls">
+      <button id="prevBtn" class="zine-btn">&lt; Prev</button>
+      <span id="pageCounter">Page 1 of 9</span>
+      <button id="nextBtn" class="zine-btn">Next &gt;</button>
+    </div>
+  </div>
+
+  <div class="project-description-section">
+      <h2>Project Description</h2>
+      <p>Design Anthology is a zine I created that showcases some of my favorite design projects created during my time as a design student. Inspired by my growing passion for print, this zine serves as both a curated portfolio piece and a personal design manifesto. The zine features three selected projects. The Fog, 1948, and The Mup—each representing a different aspect of my design practice, from UX/UI to typography and editorial layout. In addition to project highlights, Design Anthology includes a vision board of my inspirations, a curated playlist reflecting my love for music, and a biography spread that introduces my background, skills, and creative philosophy.</p>
+
+      <h3 class="my-role">My Role</h3>
+      <p>Zine Designer, Content Curator, Editor</p>
+
+      <h3>Skills + Tools</h3>
+      <p>Adobe InDesign, Adobe Photoshop, Layout Design, Typography, Composition</p>
+  </div>
+
+  <div class="overlay" id="imageOverlay">
+    <img src="" alt="Enlarged Image" class="overlay-image" id="overlayImage" />
+  </div>
+
+  <script>
+    // Dropdown functionality
+    const dropdownToggle = document.getElementById('dropdown-toggle');
+    const projectMenu = document.getElementById('project-menu');
+
+    dropdownToggle.addEventListener('click', () => {
+      projectMenu.classList.toggle('active');
+      dropdownToggle.textContent = projectMenu.classList.contains('active') ? 'ʌ' : 'v';
+    });
+
+ 
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.project-nav-dropdown-wrapper')) {
+        projectMenu.classList.remove('active');
+        dropdownToggle.textContent = 'v';
+      }
+    });
+
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        projectMenu.classList.remove('active');
+        dropdownToggle.textContent = 'v';
+      }
+    });
+
+   
+    (function markCurrent(){
+      const here = location.pathname.split('/').pop();
+      document.querySelectorAll('#project-menu a.project-menu-item').forEach(a => {
+        a.classList.toggle('current', a.getAttribute('href') === here);
+      });
+    })();
+
+    // Zine functionality
+    const zineImage = document.getElementById('zineImage');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const pageCounter = document.getElementById('pageCounter');
+    
+    const imageOverlay = document.getElementById('imageOverlay');
+    const overlayImage = document.getElementById('overlayImage');
+
+    const pages = [
+      '../img/anthology_cover_thumb.jpg',
+      '../img/anthology_spread1_thumb.jpg',
+      '../img/anthology_spread2_thumb.jpg',
+      '../img/anthology_spread3_thumb.jpg',
+      '../img/anthology_spread4_thumb.jpg',
+      '../img/anthology_spread5_thumb.jpg',
+      '../img/anthology_spread6_thumb.jpg',
+      '../img/anthology_spread7_thumb.jpg',
+      '../img/anthology_backcover_thumb.jpg'
+    ];
+
+    let currentPage = 0;
+
+    function updateZine() {
+      zineImage.src = pages[currentPage];
+      pageCounter.textContent = `Page ${currentPage + 1} of ${pages.length}`;
+      prevBtn.disabled = currentPage === 0;
+      nextBtn.disabled = currentPage === pages.length - 1;
+
+      if (currentPage === 0 || currentPage === pages.length - 1) {
+        zineImage.classList.add('zine-cover-image');
+      } else {
+        zineImage.classList.remove('zine-cover-image');
+      }
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 0) {
+        currentPage--;
+        updateZine();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < pages.length - 1) {
+        currentPage++;
+        updateZine();
+      }
+    });
+
+    // Handle overlay logic
+    zineImage.addEventListener('click', () => {
+      overlayImage.src = zineImage.src;
+      imageOverlay.classList.add('active');
+    });
+
+    imageOverlay.addEventListener('click', () => {
+      imageOverlay.classList.remove('active');
+    });
+
+    // Initial load
+    updateZine();
+  </script>
+</body>
+</html>

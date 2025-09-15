@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bembo</title>
+  <link rel="stylesheet" href="../css/bembo.css" />
+</head>
+
+<body>
+  <div class="project-nav-dropdown-wrapper">
+    <button id="dropdown-toggle" class="dropdown-toggle" aria-expanded="false" aria-controls="project-menu" aria-label="Toggle project drawer">v</button>
+    <div id="project-menu" class="project-menu" role="menu">
+      <a href="themup.html" class="project-menu-item" role="menuitem">
+        <img src="../img/themup.gif" alt="The Mup" class="project-menu-thumb" />
+      </a>
+
+      <a href="ripdjscrew.html" class="project-menu-item" role="menuitem">
+        <img src="../img/djscrew_purple_thumb.jpg" alt="DJ Screw" class="project-menu-thumb" />
+      </a>
+      <a href="thefog.html" class="project-menu-item" role="menuitem">
+        <img src="../img/thefog.gif" alt="The Fog" class="project-menu-thumb" />
+      </a>
+      <a href="1948.html" class="project-menu-item" role="menuitem">
+        <img src="../img/1948_thumb.jpg" alt="1948" class="project-menu-thumb" />
+      </a>
+      <!-- CURRENT PAGE -->
+      <a href="bembo.html" class="project-menu-item current" role="menuitem">
+        <img src="../img/bembo_thumb.png" alt="Bembo Project" class="project-menu-thumb" />
+      </a>
+      <a href="low-bit.html" class="project-menu-item" role="menuitem">
+        <img src="../img/low_bit_thumb.gif" alt="Low-Bit Legacies" class="project-menu-thumb" />
+      </a>
+      <a href="anthology.html" class="project-menu-item" role="menuitem">
+        <img src="../img/anthology_cover_thumb.jpg" alt="Zine Anthology" class="project-menu-thumb" />
+      </a>
+      <a href="art-comp.html" class="project-menu-item" role="menuitem">
+        <img src="../img/art_comp1_thumb.jpg" alt="Art Comp" class="project-menu-thumb" />
+      </a>
+    </div>
+  </div>
+
+  <div class="nav-wrapper">
+    <h1 class="site-name">
+      <a href="../index.html" class="site-name-link">Anthony Faustin</a>
+    </h1>
+    <div class="logo-nav-row">
+      <a href="../index.html" class="logo-link">
+        <img src="../img/logo.png" alt="Anthony Faustin Avatar" class="logo" />
+      </a>
+      <nav class="nav-links">
+        <a href="../projects/projects.html" class="nav-link active">projects</a>
+        <a href="../about/about.html" class="nav-link">about</a>
+        <a href="mailto:anthonyfaustin14@gmail.com" class="nav-link">contact</a>
+        <a href="../inspo/inspo.html" class="nav-link">inspo</a>
+      </nav>
+    </div>
+  </div>
+  
+  <h1 class="page-title">Bembo</h1>
+
+  <div class="bembo-wrapper">
+    <div class="bembo-gallery">
+      <img src="../img/bembo_thumb.png" alt="Bembo Poster" class="bembo-main" id="bemboMainImage" />
+
+      <div class="bembo-side-images">
+        <img src="../img/bembo_thumb.png" alt="Bembo Original Thumbnail" class="bembo-side" data-original-src="../img/bembo_thumb.png" data-caption='Bembo 30" x 40"' />
+        <img src="../img/me_look_bembo_thumb.png" alt="Bembo Look" class="bembo-side" data-original-src="../img/bembo_thumb.png" data-caption="Bembo inside of the University of San Francisco Thacher Gallery" />
+        <img src="../img/bembo_logo1_thumb.png" alt="Bembo Logo 1" class="bembo-side" data-original-src="../img/bembo_thumb.png" data-caption="Bembo alternative logo #1" />
+        <img src="../img/bembo_logo2_thumb.png" alt="Bembo Logo 2" class="bembo-side" data-original-src="../img/bembo_thumb.png" data-caption="Bembo alternative logo #2" />
+      </div>
+
+      <img src="../img/bembo_ig_thumb.jpg" alt="Bembo IG" class="bembo-side" data-original-src="../img/bembo_thumb.png" data-caption="Bembo posted on the Thacher Gallery Instagram page." />
+    </div>
+
+    <div class="individual-photo-descriptions">
+      <p id="dynamicCaption" class="photo-desc-display"></p>
+    </div>
+
+    <div class="project-description-section">
+      <h3>Project Description</h3>
+      <p>Bembo is a typographic history poster celebrating the classic serif typeface designed by Francesco Griffo in the late 15th century. Drawing inspiration from Griffo’s work in Hypnerotomachia Poliphili, the design highlights Bembo’s geometric elegance and delicate serifs, blending historical reverence with contemporary aesthetics. This poster was exhibited in the University of San Francisco Thacher Gallery.</p>
+
+      <h3 class="my-role">My Role</h3>
+      <p>Typographic Designer</p>
+
+      <h3>Skills + Tools</h3>
+      <p>Adobe InDesign, Color Theory, Typography, Composition, Historical Research</p>
+    </div>
+  </div>
+
+  <div class="overlay" id="imageOverlay">
+    <img src="" alt="Enlarged Image" class="overlay-image" id="overlayImage" />
+  </div>
+
+  <script>
+    // ----- Drawer -----
+    (function(){
+      const dropdownToggle = document.getElementById('dropdown-toggle');
+      const projectMenu = document.getElementById('project-menu');
+      if (!dropdownToggle || !projectMenu) return;
+
+      const closeMenu = () => {
+        projectMenu.classList.remove('active');
+        dropdownToggle.textContent = 'v';
+        dropdownToggle.setAttribute('aria-expanded', 'false');
+      };
+      const openMenu = () => {
+        projectMenu.classList.add('active');
+        dropdownToggle.textContent = 'ʌ';
+        dropdownToggle.setAttribute('aria-expanded', 'true');
+      };
+
+      dropdownToggle.addEventListener('click', () => {
+        projectMenu.classList.contains('active') ? closeMenu() : openMenu();
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.project-nav-dropdown-wrapper')) closeMenu();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+      });
+
+      // Auto-highlight current page (works even if file names change later)
+      const links = projectMenu.querySelectorAll('a.project-menu-item');
+      const here = location.pathname.split('/').pop();
+      links.forEach(a => a.classList.toggle('current', a.getAttribute('href') === here));
+    })();
+
+    // ----- Gallery -----
+    const bemboMainImage = document.getElementById('bemboMainImage');
+    const bemboSideImages = document.querySelectorAll('.bembo-side');
+    const imageOverlay = document.getElementById('imageOverlay');
+    const overlayImage = document.getElementById('overlayImage');
+    const dynamicCaption = document.getElementById('dynamicCaption');
+
+    // Initial caption
+    const bemboThumbSideImage = document.querySelector('img[src="../img/bembo_thumb.png"].bembo-side');
+    if (bemboThumbSideImage) {
+      const initialCaptionText = bemboThumbSideImage.dataset.caption;
+      if (initialCaptionText) {
+        dynamicCaption.textContent = initialCaptionText;
+        dynamicCaption.style.opacity = '1';
+      }
+    }
+
+    bemboSideImages.forEach(sideImage => {
+      sideImage.addEventListener('mouseenter', () => {
+        bemboMainImage.src = sideImage.src;
+        const captionText = sideImage.dataset.caption;
+        if (captionText) {
+          dynamicCaption.textContent = captionText;
+          dynamicCaption.style.opacity = '1';
+        }
+      });
+    });
+
+    bemboMainImage.addEventListener('click', () => {
+      overlayImage.src = bemboMainImage.src;
+      imageOverlay.classList.add('active');
+    });
+
+    imageOverlay.addEventListener('click', () => {
+      imageOverlay.classList.remove('active');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Mup</title>
+  <link rel="stylesheet" href="../css/themup.css" />
+</head>
+
+<body>
+  <div class="project-nav-dropdown-wrapper">
+    <button id="dropdown-toggle" class="dropdown-toggle" aria-expanded="false" aria-controls="project-menu" aria-label="Toggle project drawer">v</button>
+    <div id="project-menu" class="project-menu" role="menu">
+      <a href="themup.html" class="project-menu-item" role="menuitem">
+        <img src="../img/themup.gif" alt="The Mup" class="project-menu-thumb" />
+      </a>
+      <a href="ripdjscrew.html" class="project-menu-item" role="menuitem">
+        <img src="../img/djscrew_purple_thumb.jpg" alt="DJ Screw" class="project-menu-thumb" />
+      </a>
+      <a href="thefog.html" class="project-menu-item" role="menuitem">
+        <img src="../img/thefog.gif" alt="The Fog" class="project-menu-thumb" />
+      </a>
+      <a href="1948.html" class="project-menu-item" role="menuitem">
+        <img src="../img/1948_thumb.jpg" alt="1948" class="project-menu-thumb" />
+      </a>
+      <a href="bembo.html" class="project-menu-item" role="menuitem">
+        <img src="../img/bembo_thumb.png" alt="Bembo Project" class="project-menu-thumb" />
+      </a>
+      <a href="low-bit.html" class="project-menu-item" role="menuitem">
+        <img src="../img/low_bit_thumb.gif" alt="Low-Bit Legacies" class="project-menu-thumb" />
+      </a>
+      <a href="anthology.html" class="project-menu-item" role="menuitem">
+        <img src="../img/anthology_cover_thumb.jpg" alt="Zine Anthology" class="project-menu-thumb" />
+      </a>
+      <a href="art-comp.html" class="project-menu-item" role="menuitem">
+        <img src="../img/art_comp1_thumb.jpg" alt="Art Comp" class="project-menu-thumb" />
+      </a>
+    </div>
+  </div>
+
+  <div class="nav-wrapper">
+    <h1 class="site-name">
+      <a href="../index.html" class="site-name-link">Anthony Faustin</a>
+    </h1>
+    <div class="logo-nav-row">
+      <a href="../index.html" class="logo-link">
+        <img src="../img/logo.png" alt="Anthony Faustin Avatar" class="logo" />
+      </a>
+      <nav class="nav-links">
+        <a href="../projects/projects.html" class="nav-link active">projects</a>
+        <a href="../about/about.html" class="nav-link">about</a>
+        <a href="mailto:anthonyfaustin14@gmail.com" class="nav-link">contact</a>
+        <a href="../inspo/inspo.html" class="nav-link">inspo</a>
+      </nav>
+    </div>
+  </div>
+  
+  <h1 class="page-title">The Mup</h1>
+
+  <div class="themup-wrapper">
+    <div class="themup-gallery">
+      <img src="../img/themup.gif" alt="The Mup website teaser" class="themup-main" id="themupMainImage" />
+
+      <div class="themup-side-images">
+        <img src="../img/themup.gif" alt="The Mup Website Teaser GIF" class="themup-side" data-original-src="../img/themup.gif" data-caption="The Mup Website Teaser GIF" />
+        <img src="../img/themup_index_thumb.png" alt="The Mup Index" class="themup-side" data-original-src="../img/themup_index_thumb.png" data-caption="The Mup Index Page" />
+        <img src="../img/themup_article_thumb.png" alt="The Mup Article" class="themup-side" data-original-src="../img/themup_index_thumb.png" data-caption="The Mup Article Page" />
+        <img src="../img/themup_about_thumb.png" alt="The Mup About" class="themup-side" data-original-src="../img/themup_index_thumb.png" data-caption="The Mup About Page" />
+        <img src="../img/themup_board_thumb.png" alt="The Mup Mood Board" class="themup-side" data-original-src="../img/themup_index_thumb.png" data-caption="The Mup Mood Board" />
+      </div>
+
+      <img src="../img/themup_bestnewmusic_thumb.png" alt="The Mup Best New Music" class="themup-side" data-original-src="../img/themup_index_thumb.png" data-caption="The Mup Best New Music Feature" />
+    </div>
+
+    <div id="galleryCaptionContainer" class="gallery-caption-container">
+      <p id="dynamicCaption" class="photo-desc-display"></p>
+    </div>
+
+    <div class="project-description-section">
+      <h2>Project Description</h2>
+      <p>The Mup is a Hip-Hop/Rap music blog that highlights three emerging artists from Florida’s music scene. Designed as a digital community space, this blog invites hip-hop enthusiasts to discover new music, explore artist highlights, and browse curated rap-related mood boards. With a focus on South Florida’s unique sound and culture, The Mup immerses users in a digital experience that celebrates the artists contributing to one of the most dominant genres in music.</p>
+
+      <h3 class="my-role">My Role</h3>
+      <p>Web Designer, Developer, Content Curator</p>
+
+      <h3>Skills + Tools</h3>
+      <p>HTML, CSS, JavaScript, Adobe Photoshop, Adobe XD, User Experience, Branding</p>
+
+      <p>View the live site <a href="https://anthonyfaustin14.github.io/themup/" target="_blank" class="animated-link">here</a>.</p>
+    </div>
+  </div>
+
+  <div class="overlay" id="imageOverlay">
+    <img src="" alt="Enlarged Image" class="overlay-image" id="overlayImage" />
+  </div>
+
+  <script>
+    // ----- Drawer -----
+    (function(){
+      const dropdownToggle = document.getElementById('dropdown-toggle');
+      const projectMenu = document.getElementById('project-menu');
+      if (!dropdownToggle || !projectMenu) return;
+
+      const closeMenu = () => {
+        projectMenu.classList.remove('active');
+        dropdownToggle.textContent = 'v';
+        dropdownToggle.setAttribute('aria-expanded', 'false');
+      };
+      const openMenu = () => {
+        projectMenu.classList.add('active');
+        dropdownToggle.textContent = 'ʌ';
+        dropdownToggle.setAttribute('aria-expanded', 'true');
+      };
+
+      dropdownToggle.addEventListener('click', () => {
+        projectMenu.classList.contains('active') ? closeMenu() : openMenu();
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.project-nav-dropdown-wrapper')) closeMenu();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+      });
+
+ 
+      const links = projectMenu.querySelectorAll('a.project-menu-item');
+      const here = location.pathname.split('/').pop();
+      links.forEach(a => a.classList.toggle('current', a.getAttribute('href') === here));
+    })();
+
+    // ----- Gallery -----
+    const themupMainImage = document.getElementById('themupMainImage');
+    const themupSideImages = document.querySelectorAll('.themup-side');
+    const originalMainImageSrc = "../img/themup.gif";
+
+    const imageOverlay = document.getElementById('imageOverlay');
+    const overlayImage = document.getElementById('overlayImage');
+
+    const dynamicCaption = document.getElementById('dynamicCaption');
+
+    
+    const initialSideImage = document.querySelector('img[src="../img/themup.gif"].themup-side');
+    if (initialSideImage) {
+      const initialCaptionText = initialSideImage.dataset.caption;
+      if (initialCaptionText) {
+        dynamicCaption.textContent = initialCaptionText;
+        dynamicCaption.style.opacity = '1';
+      }
+    }
+
+    themupSideImages.forEach(sideImage => {
+      sideImage.addEventListener('mouseenter', () => {
+        themupMainImage.src = sideImage.src;
+
+        const captionText = sideImage.dataset.caption;
+        if (captionText) {
+          dynamicCaption.textContent = captionText;
+          dynamicCaption.style.opacity = '1';
+        }
+      });
+    });
+
+    themupMainImage.addEventListener('click', () => {
+      overlayImage.src = themupMainImage.src;
+      imageOverlay.classList.add('active');
+    });
+
+    imageOverlay.addEventListener('click', () => {
+      imageOverlay.classList.remove('active');
+    });
+  </script>
+</body>
+</html>
