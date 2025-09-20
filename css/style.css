@@ -113,7 +113,7 @@ body {
   transition: transform 0.1s ease-in-out;
 }
 
-/* === LOADING SCREEN (FIXED) === */
+/* === LOADING SCREEN (BIGGER + BALANCED) === */
 #loading-screen {
   position: fixed;
   inset: 0;
@@ -128,28 +128,36 @@ body {
 #loading-screen .loading-inner {
   display: flex;
   align-items: center;
-  gap: 10px; /* tighter spacing */
+  gap: 12px; /* slightly wider for balance */
   flex-wrap: nowrap;
 }
 
 #loading-screen .loading-logo {
-  width: clamp(64px, 20vw, 96px);
+  width: clamp(80px, 22vw, 110px);
   height: auto;
   object-fit: contain;
 }
 
 #loading-screen .loading-name {
   font-family: 'Kiwi Soda', sans-serif;
-  font-size: clamp(28px, 10vw, 56px); /* prevents cropping */
+  font-size: clamp(36px, 11vw, 64px);
   line-height: 1;
   margin: 0;
   text-align: left;
   color: #61457A;
+  will-change: color, opacity; /* smoother anim */
   animation: cycleTextColor 10s ease-in-out infinite, flicker 2s linear 1;
+  -webkit-animation: cycleTextColor 10s ease-in-out infinite, flicker 2s linear 1; /* Safari */
 }
 
-/* === ANIMATIONS === */
+/* === ANIMATIONS (standard + webkit) === */
 @keyframes cycleTextColor {
+  0%   { color: #61457A; }
+  33%  { color: #7B9A2E; }
+  66%  { color: #737373; }
+  100% { color: #61457A; }
+}
+@-webkit-keyframes cycleTextColor {
   0%   { color: #61457A; }
   33%  { color: #7B9A2E; }
   66%  { color: #737373; }
@@ -157,6 +165,10 @@ body {
 }
 
 @keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 22%, 24%, 55% { opacity: 0.2; }
+}
+@-webkit-keyframes flicker {
   0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
   20%, 22%, 24%, 55% { opacity: 0.2; }
 }
@@ -169,15 +181,15 @@ body {
 
   #loading-screen .loading-inner {
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
   }
 
   #loading-screen .loading-logo {
-    width: 60px;
+    width: 72px;
   }
 
   #loading-screen .loading-name {
-    font-size: 34px;
+    font-size: 40px;
     text-align: center;
   }
 }
