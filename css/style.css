@@ -17,6 +17,7 @@ body {
   min-height: 100vh;
 }
 
+/* === NAV + LOGO === */
 .nav-wrapper {
   display: flex;
   flex-direction: column;
@@ -112,11 +113,11 @@ body {
   transition: transform 0.1s ease-in-out;
 }
 
-/* === Loading Screen === */
+/* === LOADING SCREEN (FIXED) === */
 #loading-screen {
   position: fixed;
   inset: 0;
-  background-color: #ffffff; 
+  background-color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -124,24 +125,30 @@ body {
   transition: opacity 0.8s ease;
 }
 
-.loading-inner {
+#loading-screen .loading-inner {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 10px; /* tighter spacing */
+  flex-wrap: nowrap;
 }
 
-.loading-logo {
-  width: 120px; 
+#loading-screen .loading-logo {
+  width: clamp(64px, 20vw, 96px);
   height: auto;
+  object-fit: contain;
 }
 
-.loading-name {
+#loading-screen .loading-name {
   font-family: 'Kiwi Soda', sans-serif;
-  font-size: 100px;
-  animation: cycleTextColor 10s ease-in-out infinite, flicker 2s linear 1;
+  font-size: clamp(28px, 10vw, 56px); /* prevents cropping */
   line-height: 1;
+  margin: 0;
+  text-align: left;
+  color: #61457A;
+  animation: cycleTextColor 10s ease-in-out infinite, flicker 2s linear 1;
 }
 
+/* === ANIMATIONS === */
 @keyframes cycleTextColor {
   0%   { color: #61457A; }
   33%  { color: #7B9A2E; }
@@ -154,17 +161,23 @@ body {
   20%, 22%, 24%, 55% { opacity: 0.2; }
 }
 
-/* === Mobile Responsiveness === */
+/* === MOBILE RESPONSIVENESS === */
 @media (max-width: 480px) {
-  .loading-inner {
-    gap: 4px; /* even tighter on small screens */
+  .nav-wrapper { gap: 2px; }
+  .logo { margin-bottom: -12px; }
+  .time { font-size: 16px; }
+
+  #loading-screen .loading-inner {
+    flex-direction: column;
+    gap: 6px;
   }
 
-  .loading-logo {
-    width: 70px; /* smaller logo on phones */
+  #loading-screen .loading-logo {
+    width: 60px;
   }
 
-  .loading-name {
-    font-size: 42px; /* smaller text to prevent cropping */
+  #loading-screen .loading-name {
+    font-size: 34px;
+    text-align: center;
   }
 }
