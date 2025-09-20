@@ -156,7 +156,15 @@ body {
 
 /* === Mobile Responsiveness === */
 @media (max-width: 480px) {
-  .time { font-size: 16px; }
-  .nav-wrapper { gap: 2px; }
-  .logo { margin-bottom: -12px; }
+  .loading-inner {
+    gap: 4px; /* even tighter on small screens */
+  }
+
+  .loading-logo {
+    width: 70px; /* smaller logo on phones */
+  }
+
+  .loading-name {
+    font-size: 42px; /* smaller text to prevent cropping */
+  }
 }
