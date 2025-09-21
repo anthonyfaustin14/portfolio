@@ -113,7 +113,6 @@ body {
   transition: transform 0.1s ease-in-out;
 }
 
-/* === LOADING SCREEN (BIGGER + BALANCED) === */
 #loading-screen {
   position: fixed;
   inset: 0;
@@ -128,7 +127,7 @@ body {
 #loading-screen .loading-inner {
   display: flex;
   align-items: center;
-  gap: 12px; /* slightly wider for balance */
+  gap: 10px; 
   flex-wrap: nowrap;
 }
 
@@ -145,12 +144,12 @@ body {
   margin: 0;
   text-align: left;
   color: #61457A;
-  will-change: color, opacity; /* smoother anim */
+  will-change: color, opacity;
   animation: cycleTextColor 10s ease-in-out infinite, flicker 2s linear 1;
-  -webkit-animation: cycleTextColor 10s ease-in-out infinite, flicker 2s linear 1; /* Safari */
+  -webkit-animation: cycleTextColor 10s ease-in-out infinite, flicker 2s linear 1;
 }
 
-/* === ANIMATIONS (standard + webkit) === */
+/* === ANIMATIONS === */
 @keyframes cycleTextColor {
   0%   { color: #61457A; }
   33%  { color: #7B9A2E; }
@@ -181,15 +180,15 @@ body {
 
   #loading-screen .loading-inner {
     flex-direction: column;
-    gap: 8px;
+    gap: 4px; 
   }
 
   #loading-screen .loading-logo {
-    width: 72px;
+    width: 74px;
   }
 
   #loading-screen .loading-name {
-    font-size: 40px;
+    font-size: 44px;
     text-align: center;
   }
 }
