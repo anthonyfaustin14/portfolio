@@ -180,7 +180,7 @@ body {
 
   #loading-screen .loading-inner {
     flex-direction: column;
-    gap: 4px; 
+    gap: 2px; 
   }
 
   #loading-screen .loading-logo {
