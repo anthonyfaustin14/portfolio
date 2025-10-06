@@ -2,155 +2,227 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>1948</title>
+  <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/1948.css" />
 </head>
-
 <body>
-  
-  <div class="project-nav-dropdown-wrapper">
-    <button id="dropdown-toggle" class="dropdown-toggle">v</button>
-    <div id="project-menu" class="project-menu">
-      <a href="themup.html" class="project-menu-item">
-        <img src="../img/themup.gif" alt="The Mup" class="project-menu-thumb" />
-      </a>
-      <!-- ripdjscrew.html -->
-      <a href="ripdjscrew.html" class="project-menu-item">
-        <img src="../img/djscrew_purple_thumb.jpg" alt="DJ Screw" class="project-menu-thumb" />
-      </a>
-      <a href="thefog.html" class="project-menu-item">
-        <img src="../img/thefog.gif" alt="The Fog" class="project-menu-thumb" />
-      </a>
-      <a href="1948.html" class="project-menu-item current">
-        <img src="../img/1948_thumb.jpg" alt="1948" class="project-menu-thumb" />
-      </a>
-      <a href="bembo.html" class="project-menu-item">
-        <img src="../img/bembo_thumb.png" alt="Bembo Project" class="project-menu-thumb" />
-      </a>
-      <a href="low-bit.html" class="project-menu-item">
-        <img src="../img/low_bit_thumb.gif" alt="Low-Bit Legacies" class="project-menu-thumb" />
-      </a>
-      <a href="anthology.html" class="project-menu-item">
-        <img src="../img/anthology_cover_thumb.jpg" alt="Zine Anthology" class="project-menu-thumb" />
-      </a>
-      <a href="art-comp.html" class="project-menu-item">
-        <img src="../img/art_comp1_thumb.jpg" alt="Art Comp" class="project-menu-thumb" />
-      </a>
-    </div>
-  </div>
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-content">
+      <a href="../index.html" class="logo">Anthony Faustin</a>
 
-  <div class="nav-wrapper">
-    <h1 class="site-name">
-      <a href="../index.html" class="site-name-link">Anthony Faustin</a>
-    </h1>
-    <div class="logo-nav-row">
-      <a href="../index.html" class="logo-link">
-        <img src="../img/logo.png" alt="Anthony Faustin Avatar" class="logo" />
-      </a>
-      <nav class="nav-links">
-        <a href="../projects/projects.html" class="nav-link active">projects</a>
-        <a href="../about/about.html" class="nav-link">about</a>
-        <a href="mailto:anthonyfaustin14@gmail.com" class="nav-link">contact</a>
-        <a href="../inspo/inspo.html" class="nav-link">inspo</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="nav" aria-label="Primary">
+        <ul>
+          <li><a href="../index.html#work">Work</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../playground/playground.html">Playground</a></li>
+        </ul>
       </nav>
     </div>
+  </header>
+
+  <!-- Backdrop for mobile nav -->
+  <div id="navBackdrop" class="nav-backdrop" aria-hidden="true"></div>
+
+  <div class="project-nav-dropdown-wrapper" aria-label="Project switcher">
+    <button id="dropdown-toggle" class="dropdown-toggle" aria-expanded="false" aria-controls="project-menu" title="Show other projects">v</button>
+    <div id="project-menu" class="project-menu" role="menu" aria-label="Other projects">
+      <a href="themup.html" class="project-menu-item" role="menuitem" aria-label="Open The Mup">
+        <img src="../img/themup.gif" alt="The Mup thumbnail" class="project-menu-thumb" />
+      </a>
+      <a href="ripdjscrew.html" class="project-menu-item" role="menuitem" aria-label="Open RIP DJ Screw">
+        <img src="../img/djscrew_purple_thumb.jpg" alt="DJ Screw thumbnail" class="project-menu-thumb" />
+      </a>
+      <a href="thefog.html" class="project-menu-item" role="menuitem" aria-label="Open The Fog">
+        <img src="../img/thefog.gif" alt="The Fog thumbnail" class="project-menu-thumb" />
+      </a>
+      <a href="1948.html" class="project-menu-item current portrait" role="menuitem" aria-current="page" aria-label="Current project: 1948">
+        <img src="../img/1948_thumb.jpg" alt="1948 thumbnail (portrait)" class="project-menu-thumb" />
+      </a>
+      <a href="bembo.html" class="project-menu-item portrait" role="menuitem" aria-label="Open Bembo">
+        <img src="../img/bembo_thumb.png" alt="Bembo thumbnail (portrait)" class="project-menu-thumb" />
+      </a>
+      <a href="anthology.html" class="project-menu-item" role="menuitem" aria-label="Open Design Anthology">
+        <img src="../img/anthology_cover_thumb.jpg" alt="Design Anthology thumbnail" class="project-menu-thumb" />
+      </a>
+    </div>
   </div>
-  
 
-  <h1 class="page-title">1948</h1>
+  <main class="project-page" id="main">
+    <h1 class="page-title">1948</h1>
 
-  <div class="project1948-wrapper">
-    <div class="project1948-gallery">
-      <img src="../img/1948_thumb.jpg" alt="1948 Typography Poster" class="project1948-main" id="project1948MainImage" />
+    <section class="project1948-wrapper" aria-labelledby="galleryTitle">
+      <h2 id="galleryTitle" class="sr-only">Gallery</h2>
 
-      <div class="project1948-side-images">
-        <img src="../img/1948_thumb.jpg" alt="1948 Typography Poster" class="project1948-side" data-original-src="../img/1948_thumb.jpg" data-caption="1948 Typography Poster" />
-        <img src="../img/1948_mockup_thumb.jpg" alt="1948 Poster Mockup" class="project1948-side" data-original-src="../img/1948_mockup_thumb.jpg" data-caption="1948 Poster Mockup" />
-        <img src="../img/1948_logo1_thumb.png" alt="1948 Logo Option 1" class="project1948-side" data-original-src="../img/1948_logo1_thumb.png" data-caption="1948 Logo Option 1" />
-        <img src="../img/1948_logo2_thumb.png" alt="1948 Logo Option 2" class="project1948-side" data-original-src="../img/1948_logo2_thumb.png" data-caption="1948 Logo Option 2" />
+      <div class="project1948-gallery">
+        <!-- Main image (click for fullscreen) -->
+        <img
+          src="../img/1948_thumb.jpg"
+          alt="1948 Typography Poster"
+          class="project1948-main"
+          id="project1948MainImage"
+          tabindex="0"
+        />
+
+        <!-- Side thumbs -->
+        <div class="project1948-side-images">
+          <img src="../img/1948_thumb.jpg" alt="1948 Typography Poster" class="project1948-side"
+               data-original-src="../img/1948_thumb.jpg" data-caption="1948 Typography Poster" />
+          <img src="../img/1948_mockup_thumb.jpg" alt="1948 Poster Mockup" class="project1948-side"
+               data-original-src="../img/1948_mockup_thumb.jpg" data-caption="1948 Poster Mockup" />
+          <img src="../img/1948_logo1_thumb.png" alt="1948 Logo Option 1" class="project1948-side"
+               data-original-src="../img/1948_logo1_thumb.png" data-caption="1948 Logo #1" />
+          <img src="../img/1948_logo2_thumb.png" alt="1948 Logo Option 2" class="project1948-side"
+               data-original-src="../img/1948_logo2_thumb.png" data-caption="1948 Logo #2" />
+        </div>
       </div>
-    </div>
 
-    <div id="galleryCaptionContainer" class="gallery-caption-container">
-      <p id="dynamicCaption" class="photo-desc-display"></p>
-    </div>
+      <!-- Dynamic caption for hovered thumb -->
+      <div id="galleryCaptionContainer" class="gallery-caption-container" aria-live="polite">
+        <p id="dynamicCaption" class="photo-desc-display"></p>
+      </div>
 
-    <div class="project-description-section">
-      <h2>Project Description</h2>
-      <p>1948 is a typography poster that celebrates the sans-serif typeface Trade Gothic, showcasing its historical significance and timeless appeal. Created as part of a typography class, the project explores the font's origins, characteristics, and influence while incorporating elements of mid-20th-century American design. By blending historical references, such as Milwaukee transit tickets, with contemporary aesthetics, this poster highlights Trade Gothic's distinctive numerals, strong negative space, and dynamic composition. The project also reflects my personal connection to San Francisco, where the font was originally developed.</p>
+      <!-- Description -->
+      <div class="project-description-section">
+        <h2>Project Description</h2>
+        <p>
+          1948 is a typography poster that celebrates the sans-serif typeface Trade Gothic, showcasing its historical significance and timeless appeal. Created as part of a typography class, the project explores the font’s origins, characteristics, and influence while incorporating elements of mid-20th-century American design. By blending historical references, such as Milwaukee transit tickets, with contemporary aesthetics, this poster highlights Trade Gothic’s distinctive numerals, strong negative space, and dynamic composition. The project also reflects my personal connection to San Francisco, where the font was originally developed.
+        </p>
 
-      <h3 class="my-role">My Role</h3>
-      <p>Typographic Designer, Researcher</p>
+        <h3 class="my-role">My Role</h3>
+        <p>Typographic Designer, Researcher</p>
 
-      <h3>Skills + Tools</h3>
-      <p>Adobe InDesign, Historical Research, Typography, Composition,</p>
-    </div>
-  </div>
+        <h3>Skills + Tools</h3>
+        <p>Adobe InDesign, Historical Research, Typography, Composition</p>
+      </div>
+    </section>
+  </main>
 
-  <div class="overlay" id="imageOverlay">
-    <img src="" alt="Enlarged Image" class="overlay-image" id="overlayImage" />
+  <!-- Fullscreen overlay -->
+  <div class="overlay" id="imageOverlay" aria-hidden="true" role="dialog" aria-label="Image viewer">
+    <img src="" alt="" class="overlay-image" id="overlayImage" />
   </div>
 
   <script>
-    // Dropdown functionality
-    const dropdownToggle = document.getElementById('dropdown-toggle');
-    const projectMenu = document.getElementById('project-menu');
+    // ===== Mobile menu with backdrop & safe close =====
+    const menuToggle   = document.getElementById('menuToggle');
+    const nav          = document.getElementById('nav');
+    const navLinks     = nav?.querySelectorAll('a') || [];
+    const navBackdrop  = document.getElementById('navBackdrop');
+    const projectMenu  = document.getElementById('project-menu'); // may not exist on all pages
 
-    dropdownToggle.addEventListener('click', () => {
-      projectMenu.classList.toggle('active');
-      dropdownToggle.textContent = projectMenu.classList.contains('active') ? 'ʌ' : 'v';
+    function openNav(){
+      nav.classList.add('active');
+      document.body.classList.add('nav-open');
+      // Hide/close project dropdown when nav opens
+      if (projectMenu){ projectMenu.classList.remove('active'); }
+    }
+
+    function closeNav(){
+      nav.classList.remove('active');
+      document.body.classList.remove('nav-open');
+    }
+
+    function toggleNav(){
+      if (nav.classList.contains('active')) { closeNav(); } else { openNav(); }
+    }
+
+    menuToggle?.addEventListener('click', toggleNav);
+    navBackdrop?.addEventListener('click', closeNav);
+    navLinks.forEach(link => link.addEventListener('click', closeNav));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNav(); });
+
+    // ===== Project dropdown =====
+    const dropdownToggle = document.getElementById('dropdown-toggle');
+
+    function closeDropdown(){
+      projectMenu.classList.remove('active');
+      dropdownToggle.textContent = 'v';
+      dropdownToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    dropdownToggle.addEventListener('click', (e) => {
+      const active = projectMenu.classList.toggle('active');
+      dropdownToggle.textContent = active ? 'ʌ' : 'v';
+      dropdownToggle.setAttribute('aria-expanded', String(active));
+      e.stopPropagation();
     });
+
     document.addEventListener('click', (event) => {
       if (!event.target.closest('.project-nav-dropdown-wrapper')) {
-        projectMenu.classList.remove('active');
-        dropdownToggle.textContent = 'v';
+        closeDropdown();
       }
     });
 
-   
     document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        projectMenu.classList.remove('active');
-        dropdownToggle.textContent = 'v';
-      }
+      if (event.key === 'Escape') closeDropdown();
     });
-    
-    // Main gallery 
+
+    // ===== Gallery (hover + fullscreen) =====
     const project1948MainImage = document.getElementById('project1948MainImage');
     const project1948SideImages = document.querySelectorAll('.project1948-side');
-    const originalMainImageSrc = "../img/1948_thumb.jpg";
     const imageOverlay = document.getElementById('imageOverlay');
     const overlayImage = document.getElementById('overlayImage');
     const dynamicCaption = document.getElementById('dynamicCaption');
 
-    const initialSideImage = document.querySelector('img[src="../img/1948_thumb.jpg"].project1948-side');
-    if (initialSideImage) {
-        const initialCaptionText = initialSideImage.dataset.caption;
-        if (initialCaptionText) {
-            dynamicCaption.textContent = initialCaptionText;
-            dynamicCaption.style.opacity = '1';
-        }
+    // Initial caption from the first thumb
+    const initial = document.querySelector('.project1948-side');
+    if (initial?.dataset?.caption){
+      dynamicCaption.textContent = initial.dataset.caption;
+      dynamicCaption.style.opacity = '1';
     }
 
+    // Hover to preview
     project1948SideImages.forEach(sideImage => {
       sideImage.addEventListener('mouseenter', () => {
-        project1948MainImage.src = sideImage.src;
-        const captionText = sideImage.dataset.caption;
-        if (captionText) {
-          dynamicCaption.textContent = captionText;
-          dynamicCaption.style.opacity = '1';
-        }
+        project1948MainImage.src = sideImage.getAttribute('data-original-src') || sideImage.src;
+        const captionText = sideImage.dataset.caption || '';
+        dynamicCaption.textContent = captionText;
+        dynamicCaption.style.opacity = captionText ? '1' : '0';
+      });
+      // Keyboard focus preview
+      sideImage.addEventListener('focus', () => {
+        project1948MainImage.src = sideImage.getAttribute('data-original-src') || sideImage.src;
+        dynamicCaption.textContent = sideImage.dataset.caption || '';
+        dynamicCaption.style.opacity = '1';
       });
     });
 
-    project1948MainImage.addEventListener('click', () => {
-      overlayImage.src = project1948MainImage.src;
+    // Click (or Enter) to fullscreen
+    function openOverlay(src, alt){
+      overlayImage.src = src;
+      overlayImage.alt = alt || '';
       imageOverlay.classList.add('active');
+      imageOverlay.setAttribute('aria-hidden','false');
+    }
+    function closeOverlay(){
+      imageOverlay.classList.remove('active');
+      imageOverlay.setAttribute('aria-hidden','true');
+      overlayImage.src = '';
+      overlayImage.alt = '';
+    }
+
+    project1948MainImage.addEventListener('click', () => openOverlay(project1948MainImage.src, project1948MainImage.alt));
+    project1948MainImage.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openOverlay(project1948MainImage.src, project1948MainImage.alt); }
     });
 
-    imageOverlay.addEventListener('click', () => {
-      imageOverlay.classList.remove('active');
+    imageOverlay.addEventListener('click', closeOverlay);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeOverlay(); });
+
+    // Menu closes if resized above mobile breakpoint
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (window.innerWidth > 768) closeNav();
+      }, 150);
     });
   </script>
 </body>

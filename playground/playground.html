@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Playground</title>
+  <link rel="stylesheet" href="playground.css" />
+</head>
+<body>
+  <!-- Top bar -->
+  <header class="archive-header">
+    <a href="../index.html" class="home-link" aria-label="Back to home">← Anthony Faustin</a>
+    <span class="archive-title">playground</span>
+  </header>
+
+  <!-- Canvas -->
+  <main class="archive-canvas" id="archiveCanvas" aria-label="Collage canvas">
+    <!-- Pins -->
+    <div class="pin" style="--x:6;  --y:12; --w:22;">
+      <img src="play_img/gracejones.png" alt="Grace Jones" draggable="false" />
+    </div>
+
+    <div class="pin" style="--x:30; --y:8; --w:20;">
+      <img src="play_img/bbc.png" alt="BBC" draggable="false" />
+    </div>
+
+    <div class="pin sm" style="--x:55; --y:5; --w:12;">
+      <img src="play_img/blackpanther.png" alt="Black Panther" draggable="false" />
+    </div>
+
+    <div class="pin xl" style="--x:64; --y:12; --w:28;">
+      <img src="play_img/fruits.png" alt="Fruits magazine cover" draggable="false" />
+    </div>
+
+    <div class="pin lg" style="--x:8; --y:45; --w:24;">
+      <img src="play_img/silversurfer.png" alt="Silver Surfer" draggable="false" />
+    </div>
+
+    <div class="pin sm" style="--x:35; --y:38; --w:13;">
+      <img src="play_img/sonic.png" alt="Sonic" draggable="false" />
+    </div>
+
+    <div class="pin xl" style="--x:48; --y:30; --w:28;">
+      <img src="play_img/stereolab.png" alt="Stereolab" draggable="false" />
+    </div>
+
+    <div class="pin md" style="--x:78; --y:38; --w:16;">
+      <img src="play_img/wu.png" alt="Wu-Tang" draggable="false" />
+    </div>
+
+    <div class="pin md" style="--x:70; --y:62; --w:16;">
+      <img src="play_img/blackmusic.png" alt="Black Music" draggable="false" />
+    </div>
+
+    <div class="pin lg" style="--x:22; --y:60; --w:26;">
+      <img src="play_img/boondocks.JPG" alt="Boondocks" draggable="false" />
+    </div>
+
+    <div class="pin md" style="--x:4; --y:75; --w:18;">
+      <img src="play_img/nintendo.png" alt="Nintendo" draggable="false" />
+    </div>
+
+    <div class="pin lg" style="--x:44; --y:72; --w:23;">
+      <img src="play_img/karate.png" alt="Karate" draggable="false" />
+    </div>
+
+    <div class="pin xl tall" style="--x:66; --y:82; --w:22;">
+      <img src="play_img/winston.png" alt="Winston" draggable="false" />
+    </div>
+
+    <div class="pin lg" style="--x:12; --y:108; --w:22;">
+      <img src="play_img/draft.png" alt="Draft" draggable="false" />
+    </div>
+
+    <div class="pin sm" style="--x:38; --y:110; --w:14;">
+      <img src="play_img/augh.png" alt="Augh" draggable="false" />
+    </div>
+
+    <div class="pin md" style="--x:56; --y:105; --w:18;">
+      <img src="play_img/random.png" alt="Random" draggable="false" />
+    </div>
+
+    <div class="pin lg tall" style="--x:75; --y:112; --w:19;">
+      <img src="play_img/chelsea.png" alt="Chelsea" draggable="false" />
+    </div>
+
+    <div class="pin lg" style="--x:6; --y:140; --w:21;">
+      <img src="play_img/motorola.png" alt="Motorola" draggable="false" />
+    </div>
+
+    <div class="pin md" style="--x:30; --y:138; --w:19;">
+      <img src="play_img/dream.png" alt="Dream" draggable="false" />
+    </div>
+
+    <div class="pin sm" style="--x:52; --y:140; --w:12;">
+      <img src="play_img/mood.png" alt="Mood" draggable="false" />
+    </div>
+  </main>
+
+  <footer class="archive-footer">
+    <small>Anthony Faustin — Playground</small>
+  </footer>
+
+  <script>
+    
+    (function () {
+      const canvas = document.getElementById('archiveCanvas');
+      const pins = Array.from(canvas.querySelectorAll('.pin'));
+      let active = null;
+      let startX = 0, startY = 0;
+      let startLeft = 0, startTop = 0;
+
+      function pxToVw(px) { return (px / window.innerWidth) * 100; }
+      function pxToVh(px) { return (px / window.innerHeight) * 100; }
+
+      function sizeCanvas(padVh = 10) {
+        
+        let bottom = 0;
+        const canvasRect = canvas.getBoundingClientRect();
+        pins.forEach(p => {
+          const r = p.getBoundingClientRect();
+          const bottomPx = (r.bottom - canvasRect.top);
+          if (bottomPx > bottom) bottom = bottomPx;
+        });
+      
+        const neededVh = Math.max(100, (bottom / window.innerHeight) * 100 + padVh);
+        canvas.style.setProperty('--canvasH', neededVh.toFixed(2) + 'vh');
+      }
+
+      function pointerDown(e) {
+        active = e.currentTarget;
+        active.classList.add('dragging');
+        const rect = active.getBoundingClientRect();
+        const canvasRect = canvas.getBoundingClientRect();
+        startLeft = rect.left - canvasRect.left;
+        startTop  = rect.top  - canvasRect.top;
+        startX = (e.touches ? e.touches[0].clientX : e.clientX);
+        startY = (e.touches ? e.touches[0].clientY : e.clientY);
+
+        const maxZ = Math.max(...pins.map(p => parseInt(getComputedStyle(p).zIndex) || 1), 1);
+        active.style.zIndex = maxZ + 1;
+
+        e.preventDefault();
+      }
+
+      function pointerMove(e) {
+        if (!active) return;
+        const x = (e.touches ? e.touches[0].clientX : e.clientX);
+        const y = (e.touches ? e.touches[0].clientY : e.clientY);
+        const dx = x - startX;
+        const dy = y - startY;
+
+        const canvasRect = canvas.getBoundingClientRect();
+        const rect = active.getBoundingClientRect();
+        let newLeft = startLeft + dx;
+        let newTop  = startTop  + dy;
+
+        const maxLeft = canvasRect.width - rect.width;
+        const maxTop  = canvasRect.height - rect.height;
+        newLeft = Math.max(0, Math.min(newLeft, maxLeft));
+        newTop  = Math.max(0, Math.min(newTop,  maxTop));
+
+        active.style.setProperty('--x', pxToVw(newLeft));
+        active.style.setProperty('--y', pxToVh(newTop));
+      }
+
+      function pointerUp() {
+        if (active) active.classList.remove('dragging');
+        active = null;
+        sizeCanvas();
+      }
+
+      // Attach events
+      pins.forEach(pin => {
+        pin.addEventListener('mousedown', pointerDown, { passive: false });
+        pin.addEventListener('touchstart', pointerDown, { passive: false });
+        // when images inside pins load, recalc heights
+        const img = pin.querySelector('img');
+        if (img && !img.complete) {
+          img.addEventListener('load', () => sizeCanvas(), { once: true });
+        }
+      });
+      window.addEventListener('mousemove',  pointerMove, { passive: false });
+      window.addEventListener('touchmove',  pointerMove, { passive: false });
+      window.addEventListener('mouseup',    pointerUp);
+      window.addEventListener('touchend',   pointerUp);
+      window.addEventListener('touchcancel',pointerUp);
+
+     
+      let rAF = null;
+      window.addEventListener('resize', () => {
+        if (rAF) cancelAnimationFrame(rAF);
+        rAF = requestAnimationFrame(() => sizeCanvas());
+      });
+
+    
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+     
+      window.addEventListener('load', () => sizeCanvas());
+      sizeCanvas();
+    })();
+  </script>
+</body>
+</html>

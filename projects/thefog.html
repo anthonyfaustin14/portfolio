@@ -2,166 +2,219 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Fog</title>
+  <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/thefog.css" />
 </head>
 
 <body>
-  <div class="project-nav-dropdown-wrapper">
-    <button id="dropdown-toggle" class="dropdown-toggle" aria-expanded="false" aria-controls="project-menu" aria-label="Toggle project drawer">v</button>
-    <div id="project-menu" class="project-menu" role="menu">
-      <a href="themup.html" class="project-menu-item" role="menuitem">
+  <header class="site-header">
+    <div class="header-content">
+      <a href="../index.html" class="logo">Anthony Faustin</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="nav" aria-label="Primary">
+        <ul>
+          <li><a href="../index.html#work">Work</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../playground/playground.html">Playground</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  
+  <div id="navBackdrop" class="nav-backdrop" aria-hidden="true"></div>
+
+
+  <div class="project-nav-dropdown-wrapper" aria-label="Project switcher">
+    <button id="dropdown-toggle" class="dropdown-toggle" aria-expanded="false" aria-controls="project-menu" title="Show other projects">v</button>
+    <div id="project-menu" class="project-menu" role="menu" aria-label="Other projects">
+      <a href="themup.html" class="project-menu-item" role="menuitem" aria-label="Open The Mup">
         <img src="../img/themup.gif" alt="The Mup" class="project-menu-thumb" />
       </a>
-      <a href="ripdjscrew.html" class="project-menu-item" role="menuitem">
+      <a href="ripdjscrew.html" class="project-menu-item" role="menuitem" aria-label="Open RIP DJ Screw">
         <img src="../img/djscrew_purple_thumb.jpg" alt="DJ Screw" class="project-menu-thumb" />
       </a>
-      <a href="thefog.html" class="project-menu-item current" role="menuitem">
+      <a href="thefog.html" class="project-menu-item current" role="menuitem" aria-current="page" aria-label="Current project: The Fog">
         <img src="../img/thefog.gif" alt="The Fog" class="project-menu-thumb" />
       </a>
-      <a href="1948.html" class="project-menu-item" role="menuitem">
+      <a href="1948.html" class="project-menu-item portrait" role="menuitem" aria-label="Open 1948 (portrait)">
         <img src="../img/1948_thumb.jpg" alt="1948" class="project-menu-thumb" />
       </a>
-      <a href="bembo.html" class="project-menu-item" role="menuitem">
+      <a href="bembo.html" class="project-menu-item portrait" role="menuitem" aria-label="Open Bembo (portrait)">
         <img src="../img/bembo_thumb.png" alt="Bembo Project" class="project-menu-thumb" />
       </a>
-      <a href="low-bit.html" class="project-menu-item" role="menuitem">
+      <a href="low-bit.html" class="project-menu-item" role="menuitem" aria-label="Open Low-Bit Legacies">
         <img src="../img/low_bit_thumb.gif" alt="Low-Bit Legacies" class="project-menu-thumb" />
       </a>
-      <a href="anthology.html" class="project-menu-item" role="menuitem">
+      <a href="anthology.html" class="project-menu-item" role="menuitem" aria-label="Open Zine Anthology">
         <img src="../img/anthology_cover_thumb.jpg" alt="Zine Anthology" class="project-menu-thumb" />
       </a>
-      <a href="art-comp.html" class="project-menu-item" role="menuitem">
+      <a href="art-comp.html" class="project-menu-item" role="menuitem" aria-label="Open Art Comp">
         <img src="../img/art_comp1_thumb.jpg" alt="Art Comp" class="project-menu-thumb" />
       </a>
     </div>
   </div>
-
-  <div class="nav-wrapper">
-    <h1 class="site-name">
-      <a href="../index.html" class="site-name-link">Anthony Faustin</a>
-    </h1>
-    <div class="logo-nav-row">
-      <a href="../index.html" class="logo-link">
-        <img src="../img/logo.png" alt="Anthony Faustin Avatar" class="logo" />
-      </a>
-      <nav class="nav-links">
-        <a href="../projects/projects.html" class="nav-link active">projects</a>
-        <a href="../about/about.html" class="nav-link">about</a>
-        <a href="mailto:anthonyfaustin14@gmail.com" class="nav-link">contact</a>
-        <a href="../inspo/inspo.html" class="nav-link">inspo</a>
-      </nav>
-    </div>
-  </div>
   
-  <h1 class="page-title">The Fog</h1>
+  <main class="project-page" id="main">
+    <h1 class="page-title">The Fog</h1>
 
-  <div class="thefog-wrapper">
-    <div class="thefog-gallery">
-      <img src="../img/thefog.gif" alt="The Fog Website Teaser" class="thefog-main" id="thefogMainImage" />
+    <section class="thefog-wrapper" aria-labelledby="galleryTitle">
+      <h2 id="galleryTitle" class="sr-only">Gallery</h2>
 
-      <div class="thefog-side-images">
-        <img src="../img/thefog.gif" alt="The Fog Website Teaser" class="thefog-side" data-original-src="../img/thefog.gif" data-caption="The Fog Website Teaser GIF" />
-        <img src="../img/fogstream_thumb.png" alt="Fog Stream UI" class="thefog-side" data-original-src="../img/thefog.gif" data-caption="The Fogstream UI" />
-        <img src="../img/fogstream_posts_thumb.png" alt="Fog Stream Posts" class="thefog-side" data-original-src="../img/thefog.gif" data-caption="The Fogstream Posts UI" />
-        <img src="../img/tucker_thumb.png" alt="Tucker's Feed" class="thefog-side" data-original-src="../img/thefog.gif" data-caption="A Feed From Tucker" />
+      <div class="thefog-gallery">
+        
+        <img
+          src="../img/thefog.gif"
+          alt="The Fog Website Teaser"
+          class="thefog-main"
+          id="thefogMainImage"
+          tabindex="0"
+        />
+
+        <div class="thefog-side-images">
+          <img src="../img/thefog.gif" alt="The Fog Website Teaser GIF" class="thefog-side"
+               data-original-src="../img/thefog.gif" data-caption="The Fog Website Teaser GIF" />
+          <img src="../img/fogstream_thumb.png" alt="The Fogstream UI" class="thefog-side"
+               data-original-src="../img/fogstream_thumb.png" data-caption="The Fogstream UI" />
+          <img src="../img/fogstream_posts_thumb.png" alt="The Fogstream Posts UI" class="thefog-side"
+               data-original-src="../img/fogstream_posts_thumb.png" data-caption="The Fogstream Posts UI" />
+          <img src="../img/tucker_thumb.png" alt="A Feed From Tucker" class="thefog-side"
+               data-original-src="../img/tucker_thumb.png" data-caption="Friend Profile" />
+        </div>
       </div>
-    </div>
 
-    <div id="galleryCaptionContainer" class="gallery-caption-container">
-      <p id="dynamicCaption" class="photo-desc-display"></p>
-    </div>
+      <div id="galleryCaptionContainer" class="gallery-caption-container" aria-live="polite">
+        <p id="dynamicCaption" class="photo-desc-display"></p>
+      </div>
 
-    <div class="project-description-section">
-      <h2>Project Description</h2>
-      <p>The Fog is a conceptual social media feed inspired by my daily life as a university student in San Francisco. The Fog combines pixel/8 -bit aesthetics with elements of the San Francisco's iconic landmarks, like the Golden Gate Bridge and its famous Karl the fog. This project brings together my personal experiences and my friends, connecting us digitally, regardless of location. By incorporating interactive elements like a "friends navigation tab," I aimed to create a digital space where both friends and strangers can interact with my design.</p>
+      <div class="project-description-section">
+        <h2>Project Description</h2>
+        <p>
+          The Fog is a conceptual social media feed inspired by my daily life as a university student in San Francisco. The Fog combines pixel/8-bit aesthetics with elements of San Francisco’s iconic landmarks, like the Golden Gate Bridge and Karl the Fog. This project brings together my personal experiences and my friends, connecting us digitally regardless of location. By incorporating interactive elements like a “friends navigation tab,” I aimed to create a digital space where both friends and strangers can interact with my design.
+        </p>
 
-      <h3 class="my-role">My Role</h3>
-      <p>Brand Strategist, UX Designer, Visual Designer</p>
+        <h3 class="my-role">My Role</h3>
+        <p>Brand Strategist, UX Designer, Visual Designer</p>
 
-      <h3>Skills + Tools</h3>
-      <p>Adobe Photoshop, Figma, Branding, UI/UX, Typography</p>
+        <h3>Skills + Tools</h3>
+        <p>Adobe Photoshop, Figma, Branding, UI/UX, Typography</p>
 
-      <p>View the live site <a href="https://anthonyfaustin14.github.io/thefog/" target="_blank" class="animated-link">here</a>.</p>
-    </div>
-  </div>
+        <p>View the live site
+          <a href="https://anthonyfaustin14.github.io/thefog/" target="_blank" rel="noopener" class="animated-link">here</a>.
+        </p>
+      </div>
+    </section>
+  </main>
 
-  <div class="overlay" id="imageOverlay">
-    <img src="" alt="Enlarged Image" class="overlay-image" id="overlayImage" />
+  <div class="overlay" id="imageOverlay" aria-hidden="true" role="dialog" aria-label="Image viewer">
+    <img src="" alt="" class="overlay-image" id="overlayImage" />
   </div>
 
   <script>
-    // ----- Drawer -----
-    (function(){
-      const dropdownToggle = document.getElementById('dropdown-toggle');
-      const projectMenu = document.getElementById('project-menu');
-      if (!dropdownToggle || !projectMenu) return;
+    const menuToggle   = document.getElementById('menuToggle');
+    const nav          = document.getElementById('nav');
+    const navLinks     = nav?.querySelectorAll('a') || [];
+    const navBackdrop  = document.getElementById('navBackdrop');
+    const projectMenu  = document.getElementById('project-menu');
 
-      const closeMenu = () => {
-        projectMenu.classList.remove('active');
-        dropdownToggle.textContent = 'v';
-        dropdownToggle.setAttribute('aria-expanded', 'false');
-      };
-      const openMenu = () => {
-        projectMenu.classList.add('active');
-        dropdownToggle.textContent = 'ʌ';
-        dropdownToggle.setAttribute('aria-expanded', 'true');
-      };
+    function openNav(){
+      nav.classList.add('active');
+      document.body.classList.add('nav-open');
+      if (projectMenu){ projectMenu.classList.remove('active'); }
+    }
+    function closeNav(){
+      nav.classList.remove('active');
+      document.body.classList.remove('nav-open');
+    }
+    function toggleNav(){
+      nav.classList.contains('active') ? closeNav() : openNav();
+    }
+    menuToggle?.addEventListener('click', toggleNav);
+    navBackdrop?.addEventListener('click', closeNav);
+    navLinks.forEach(link => link.addEventListener('click', closeNav));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNav(); });
 
-      dropdownToggle.addEventListener('click', () => {
-        projectMenu.classList.contains('active') ? closeMenu() : openMenu();
-      });
+    const dropdownToggle = document.getElementById('dropdown-toggle');
 
-      document.addEventListener('click', (e) => {
-        if (!e.target.closest('.project-nav-dropdown-wrapper')) closeMenu();
-      });
+    function closeDropdown(){
+      projectMenu.classList.remove('active');
+      dropdownToggle.textContent = 'v';
+      dropdownToggle.setAttribute('aria-expanded', 'false');
+    }
 
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeMenu();
-      });
+    dropdownToggle.addEventListener('click', (e) => {
+      const active = projectMenu.classList.toggle('active');
+      dropdownToggle.textContent = active ? 'ʌ' : 'v';
+      dropdownToggle.setAttribute('aria-expanded', String(active));
+      e.stopPropagation();
+    });
 
-      // Auto-highlight current page (safety if filenames change later)
-      const here = location.pathname.split('/').pop();
-      document.querySelectorAll('#project-menu a.project-menu-item')
-        .forEach(a => a.classList.toggle('current', a.getAttribute('href') === here));
-    })();
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.project-nav-dropdown-wrapper')) closeDropdown();
+    });
 
-    // ----- Gallery -----
-    const thefogMainImage = document.getElementById('thefogMainImage');
-    const thefogSideImages = document.querySelectorAll('.thefog-side');
-    const imageOverlay = document.getElementById('imageOverlay');
-    const overlayImage = document.getElementById('overlayImage');
-    const dynamicCaption = document.getElementById('dynamicCaption');
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeDropdown();
+    });
 
-    
-    const initialSideImage = document.querySelector('img[src="../img/thefog.gif"].thefog-side');
-    if (initialSideImage) {
-      const initialCaptionText = initialSideImage.dataset.caption;
-      if (initialCaptionText) {
-        dynamicCaption.textContent = initialCaptionText;
-        dynamicCaption.style.opacity = '1';
-      }
+    const here = location.pathname.split('/').pop();
+    document.querySelectorAll('#project-menu a.project-menu-item')
+      .forEach(a => a.classList.toggle('current', a.getAttribute('href') === here));
+
+    const thefogMainImage   = document.getElementById('thefogMainImage');
+    const thefogSideImages  = document.querySelectorAll('.thefog-side');
+    const imageOverlay      = document.getElementById('imageOverlay');
+    const overlayImage      = document.getElementById('overlayImage');
+    const dynamicCaption    = document.getElementById('dynamicCaption');
+
+    const initial = document.querySelector('.thefog-side');
+    if (initial?.dataset?.caption){
+      dynamicCaption.textContent = initial.dataset.caption;
+      dynamicCaption.style.opacity = '1';
     }
 
     thefogSideImages.forEach(sideImage => {
-      sideImage.addEventListener('mouseenter', () => {
-        thefogMainImage.src = sideImage.src;
-        const captionText = sideImage.dataset.caption;
-        if (captionText) {
-          dynamicCaption.textContent = captionText;
-          dynamicCaption.style.opacity = '1';
-        }
-      });
+      function swapTo() {
+        thefogMainImage.src = sideImage.getAttribute('data-original-src') || sideImage.src;
+        const captionText = sideImage.dataset.caption || '';
+        dynamicCaption.textContent = captionText;
+        dynamicCaption.style.opacity = captionText ? '1' : '0';
+      }
+      sideImage.addEventListener('mouseenter', swapTo);
+      sideImage.addEventListener('focus', swapTo);
     });
 
-    thefogMainImage.addEventListener('click', () => {
-      overlayImage.src = thefogMainImage.src;
+    function openOverlay(src, alt){
+      overlayImage.src = src;
+      overlayImage.alt = alt || '';
       imageOverlay.classList.add('active');
-    });
-
-    imageOverlay.addEventListener('click', () => {
+      imageOverlay.setAttribute('aria-hidden','false');
+    }
+    function closeOverlay(){
       imageOverlay.classList.remove('active');
+      imageOverlay.setAttribute('aria-hidden','true');
+      overlayImage.src = '';
+      overlayImage.alt = '';
+    }
+    thefogMainImage.addEventListener('click', () => openOverlay(thefogMainImage.src, thefogMainImage.alt));
+    thefogMainImage.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openOverlay(thefogMainImage.src, thefogMainImage.alt); }
+    });
+    imageOverlay.addEventListener('click', closeOverlay);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeOverlay(); });
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (window.innerWidth > 768) closeNav();
+      }, 150);
     });
   </script>
 </body>

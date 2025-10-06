@@ -2,168 +2,211 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RIP DJ SCREW</title>
+  <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/ripdjscrew.css" />
 </head>
 
 <body>
-  <div class="project-nav-dropdown-wrapper">
-    <button id="dropdown-toggle" class="dropdown-toggle" aria-expanded="false" aria-controls="project-menu" aria-label="Toggle project drawer">v</button>
-    <div id="project-menu" class="project-menu" role="menu">
-      <a href="themup.html" class="project-menu-item" role="menuitem">
+ 
+  <header class="site-header">
+    <div class="header-content">
+      <a href="../index.html" class="logo">Anthony Faustin</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="nav" aria-label="Primary">
+        <ul>
+          <li><a href="../index.html#work">Work</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../playground/playground.html">Playground</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div id="navBackdrop" class="nav-backdrop" aria-hidden="true"></div>
+
+  <div class="project-nav-dropdown-wrapper" aria-label="Project switcher">
+    <button id="dropdown-toggle" class="dropdown-toggle" aria-expanded="false" aria-controls="project-menu" title="Show other projects">v</button>
+    <div id="project-menu" class="project-menu" role="menu" aria-label="Other projects">
+      <a href="themup.html" class="project-menu-item" role="menuitem" aria-label="Open The Mup">
         <img src="../img/themup.gif" alt="The Mup" class="project-menu-thumb" />
       </a>
-     
-      <a href="ripdjscrew.html" class="project-menu-item current" role="menuitem">
+      <a href="ripdjscrew.html" class="project-menu-item current" role="menuitem" aria-current="page" aria-label="Current project: RIP DJ SCREW">
         <img src="../img/djscrew_purple_thumb.jpg" alt="DJ Screw" class="project-menu-thumb" />
       </a>
-      <a href="thefog.html" class="project-menu-item" role="menuitem">
+      <a href="thefog.html" class="project-menu-item" role="menuitem" aria-label="Open The Fog">
         <img src="../img/thefog.gif" alt="The Fog" class="project-menu-thumb" />
       </a>
-      <a href="1948.html" class="project-menu-item" role="menuitem">
+      <a href="1948.html" class="project-menu-item portrait" role="menuitem" aria-label="Open 1948 (portrait)">
         <img src="../img/1948_thumb.jpg" alt="1948" class="project-menu-thumb" />
       </a>
-      <a href="bembo.html" class="project-menu-item" role="menuitem">
+      <a href="bembo.html" class="project-menu-item portrait" role="menuitem" aria-label="Open Bembo (portrait)">
         <img src="../img/bembo_thumb.png" alt="Bembo Project" class="project-menu-thumb" />
       </a>
-      <a href="low-bit.html" class="project-menu-item" role="menuitem">
-        <img src="../img/low_bit_thumb.gif" alt="Low-Bit Legacies" class="project-menu-thumb" />
-      </a>
-      <a href="anthology.html" class="project-menu-item" role="menuitem">
+      <a href="anthology.html" class="project-menu-item" role="menuitem" aria-label="Open Zine Anthology">
         <img src="../img/anthology_cover_thumb.jpg" alt="Zine Anthology" class="project-menu-thumb" />
       </a>
-      <a href="art-comp.html" class="project-menu-item" role="menuitem">
-        <img src="../img/art_comp1_thumb.jpg" alt="Art Comp" class="project-menu-thumb" />
-      </a>
-    </div>
-  </div>
-
-  <div class="nav-wrapper">
-    <h1 class="site-name">
-      <a href="../index.html" class="site-name-link">Anthony Faustin</a>
-    </h1>
-    <div class="logo-nav-row">
-      <a href="../index.html" class="logo-link">
-        <img src="../img/logo.png" alt="Anthony Faustin Avatar" class="logo" />
-      </a>
-      <nav class="nav-links">
-        <a href="../projects/projects.html" class="nav-link active">projects</a>
-        <a href="../about/about.html" class="nav-link">about</a>
-        <a href="mailto:anthonyfaustin14@gmail.com" class="nav-link">contact</a>
-        <a href="../inspo/inspo.html" class="nav-link">inspo</a>
-      </nav>
     </div>
   </div>
   
-  <h1 class="page-title">RIP DJ SCREW</h1>
+  <main class="project-page" id="main">
+    <h1 class="page-title">RIP DJ SCREW</h1>
 
-  <div class="djscrew-wrapper">
-    <div class="djscrew-gallery">
-      <img src="../img/djscrew_purple_thumb.jpg" alt="DJ Screw Poster (Purple)" class="djscrew-main" id="djscrewMainImage" />
+    <section class="djscrew-wrapper" aria-labelledby="galleryTitle">
+      <h2 id="galleryTitle" class="sr-only">Gallery</h2>
 
-      <div class="djscrew-side-images">
-        <img src="../img/djscrew_purple_thumb.jpg" alt="DJ Screw Poster (Purple)" class="djscrew-side" data-original-src="../img/djscrew_purple_thumb.jpg" data-caption="DJ Screw Poster (Purple)" />
-        <img src="../img/djscrew_green_thumb.jpg" alt="DJ Screw Poster (Green)" class="djscrew-side" data-original-src="../img/djscrew_purple_thumb.jpg" data-caption="DJ Screw Poster (Green)" />
-        <img src="../img/djscrew_blue_thumb.jpg" alt="DJ Screw Poster (Blue)" class="djscrew-side" data-original-src="../img/djscrew_purple_thumb.jpg" data-caption="DJ Screw Poster (Blue)" />
+      <div class="djscrew-gallery">
+       
+        <img
+          src="../img/djscrew_purple_thumb.jpg"
+          alt="DJ Screw Poster (Purple)"
+          class="djscrew-main"
+          id="djscrewMainImage"
+          tabindex="0"
+        />
+
+        <div class="djscrew-side-images">
+          <img src="../img/djscrew_purple_thumb.jpg" alt="DJ Screw Poster (Purple)" class="djscrew-side"
+               data-original-src="../img/djscrew_purple_thumb.jpg" data-caption="DJ Screw Poster (Purple)" />
+          <img src="../img/djscrew_green_thumb.jpg" alt="DJ Screw Poster (Green)" class="djscrew-side"
+               data-original-src="../img/djscrew_green_thumb.jpg" data-caption="DJ Screw Poster (Green)" />
+          <img src="../img/djscrew_blue_thumb.jpg" alt="DJ Screw Poster (Blue)" class="djscrew-side"
+               data-original-src="../img/djscrew_blue_thumb.jpg" data-caption="DJ Screw Poster (Blue)" />
+        </div>
       </div>
-    </div>
 
-    <div id="galleryCaptionContainer" class="gallery-caption-container">
-      <p id="dynamicCaption" class="photo-desc-display"></p>
-    </div>
 
-    <div class="project-description-section">
+      <div id="galleryCaptionContainer" class="gallery-caption-container" aria-live="polite">
+        <p id="dynamicCaption" class="photo-desc-display"></p>
+      </div>
+
+      <div class="project-description-section">
         <h2>Project Description</h2>
-        <p>This project is a tribute poster series celebrating the legacy of DJ Screw, the pioneer of the chopped and screwed sound. The posters blend typography with vibrant, distorted imagery to capture the unique, hypnotic essence of his music. Each color variation represents a different side of his iconic style.</p>
-    
-        <p>The imagery was intentionally distorted to reflect the chopped and screwed style, and was created by manipulating the photos using Audacity rather than traditional photo editing software like Photoshop. </p>
-    
+        <p>
+          This project is a tribute poster series celebrating the legacy of DJ Screw, the pioneer of the chopped and screwed sound. The posters blend typography with vibrant, distorted imagery to capture the unique, hypnotic essence of his music. Each color variation represents a different side of his iconic style.
+        </p>
+        <p>
+          The imagery was intentionally distorted to reflect the chopped and screwed style, and was created by manipulating the photos using Audacity rather than traditional photo editing software like Photoshop.
+        </p>
+
         <h3 class="my-role">My Role</h3>
         <p>Typographic Designer, Visual Artist</p>
-    
+
         <h3>Skills + Tools</h3>
         <p>Audacity (Audio Manipulation), Typography, Color Theory, Photoshop</p>
-    </div>
-  </div>
+      </div>
+    </section>
+  </main>
 
-  <div class="overlay" id="imageOverlay">
-    <img src="" alt="Enlarged Image" class="overlay-image" id="overlayImage" />
+  <div class="overlay" id="imageOverlay" aria-hidden="true" role="dialog" aria-label="Image viewer">
+    <img src="" alt="" class="overlay-image" id="overlayImage" />
   </div>
 
   <script>
-    // ----- Drawer -----
-    (function(){
-      const dropdownToggle = document.getElementById('dropdown-toggle');
-      const projectMenu = document.getElementById('project-menu');
-      if (!dropdownToggle || !projectMenu) return;
+   
+    const menuToggle   = document.getElementById('menuToggle');
+    const nav          = document.getElementById('nav');
+    const navLinks     = nav?.querySelectorAll('a') || [];
+    const navBackdrop  = document.getElementById('navBackdrop');
+    const projectMenu  = document.getElementById('project-menu');
 
-      const closeMenu = () => {
-        projectMenu.classList.remove('active');
-        dropdownToggle.textContent = 'v';
-        dropdownToggle.setAttribute('aria-expanded', 'false');
-      };
-      const openMenu = () => {
-        projectMenu.classList.add('active');
-        dropdownToggle.textContent = 'ʌ';
-        dropdownToggle.setAttribute('aria-expanded', 'true');
-      };
+    function openNav(){
+      nav.classList.add('active');
+      document.body.classList.add('nav-open');
+      if (projectMenu){ projectMenu.classList.remove('active'); }
+    }
+    function closeNav(){
+      nav.classList.remove('active');
+      document.body.classList.remove('nav-open');
+    }
+    function toggleNav(){
+      nav.classList.contains('active') ? closeNav() : openNav();
+    }
+    menuToggle?.addEventListener('click', toggleNav);
+    navBackdrop?.addEventListener('click', closeNav);
+    navLinks.forEach(link => link.addEventListener('click', closeNav));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNav(); });
 
-      dropdownToggle.addEventListener('click', () => {
-        projectMenu.classList.contains('active') ? closeMenu() : openMenu();
-      });
+    const dropdownToggle = document.getElementById('dropdown-toggle');
 
-      document.addEventListener('click', (e) => {
-        if (!e.target.closest('.project-nav-dropdown-wrapper')) closeMenu();
-      });
+    function closeDropdown(){
+      projectMenu.classList.remove('active');
+      dropdownToggle.textContent = 'v';
+      dropdownToggle.setAttribute('aria-expanded', 'false');
+    }
 
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeMenu();
-      });
+    dropdownToggle.addEventListener('click', (e) => {
+      const active = projectMenu.classList.toggle('active');
+      dropdownToggle.textContent = active ? 'ʌ' : 'v';
+      dropdownToggle.setAttribute('aria-expanded', String(active));
+      e.stopPropagation();
+    });
 
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.project-nav-dropdown-wrapper')) closeDropdown();
+    });
 
-      const links = projectMenu.querySelectorAll('a.project-menu-item');
-      const here = location.pathname.split('/').pop();
-      links.forEach(a => a.classList.toggle('current', a.getAttribute('href') === here));
-    })();
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeDropdown();
+    });
 
-    // ----- Gallery -----
-    const djscrewMainImage = document.getElementById('djscrewMainImage');
+    const here = location.pathname.split('/').pop();
+    document.querySelectorAll('#project-menu a.project-menu-item')
+      .forEach(a => a.classList.toggle('current', a.getAttribute('href') === here));
+
+    const djscrewMainImage  = document.getElementById('djscrewMainImage');
     const djscrewSideImages = document.querySelectorAll('.djscrew-side');
+    const imageOverlay      = document.getElementById('imageOverlay');
+    const overlayImage      = document.getElementById('overlayImage');
+    const dynamicCaption    = document.getElementById('dynamicCaption');
 
-    const imageOverlay = document.getElementById('imageOverlay');
-    const overlayImage = document.getElementById('overlayImage');
-
-    const dynamicCaption = document.getElementById('dynamicCaption');
-
-    // Initial caption on load
-    const initialSideImage = document.querySelector('img[src="../img/djscrew_purple_thumb.jpg"].djscrew-side');
-    if (initialSideImage) {
-      const initialCaptionText = initialSideImage.dataset.caption;
-      if (initialCaptionText) {
-        dynamicCaption.textContent = initialCaptionText;
-        dynamicCaption.style.opacity = '1';
-      }
+    const initial = document.querySelector('.djscrew-side');
+    if (initial?.dataset?.caption){
+      dynamicCaption.textContent = initial.dataset.caption;
+      dynamicCaption.style.opacity = '1';
     }
 
     djscrewSideImages.forEach(sideImage => {
-      sideImage.addEventListener('mouseenter', () => {
-        djscrewMainImage.src = sideImage.src;
-        const captionText = sideImage.dataset.caption;
-        if (captionText) {
-          dynamicCaption.textContent = captionText;
-          dynamicCaption.style.opacity = '1';
-        }
-      });
+      function swapTo() {
+        djscrewMainImage.src = sideImage.getAttribute('data-original-src') || sideImage.src;
+        const captionText = sideImage.dataset.caption || '';
+        dynamicCaption.textContent = captionText;
+        dynamicCaption.style.opacity = captionText ? '1' : '0';
+      }
+      sideImage.addEventListener('mouseenter', swapTo);
+      sideImage.addEventListener('focus', swapTo);
     });
 
-    djscrewMainImage.addEventListener('click', () => {
-      overlayImage.src = djscrewMainImage.src;
+    function openOverlay(src, alt){
+      overlayImage.src = src;
+      overlayImage.alt = alt || '';
       imageOverlay.classList.add('active');
-    });
-
-    imageOverlay.addEventListener('click', () => {
+      imageOverlay.setAttribute('aria-hidden','false');
+    }
+    function closeOverlay(){
       imageOverlay.classList.remove('active');
+      imageOverlay.setAttribute('aria-hidden','true');
+      overlayImage.src = '';
+      overlayImage.alt = '';
+    }
+    djscrewMainImage.addEventListener('click', () => openOverlay(djscrewMainImage.src, djscrewMainImage.alt));
+    djscrewMainImage.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openOverlay(djscrewMainImage.src, djscrewMainImage.alt); }
+    });
+    imageOverlay.addEventListener('click', closeOverlay);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeOverlay(); });
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (window.innerWidth > 768) closeNav();
+      }, 150);
     });
   </script>
 </body>

@@ -1,51 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Anthony Faustin</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <header class="site-header">
+    <div class="header-content">
+      <a href="/" class="logo">Anthony Faustin</a>
 
-  <div id="loading-screen">
-    <div class="loading-inner">
-      <img src="img/logo.png" alt="Logo" class="loading-logo" />
-      <h1 class="loading-name">Anthony Faustin</h1>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="nav" aria-label="Primary">
+        <ul>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="./playground/playground.html">Playground</a></li>
+        </ul>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <div class="nav-wrapper">
-    <img src="img/logo.png" alt="Logo" class="logo" />
+  <section class="work-section" id="work" aria-labelledby="work-title">
+    <h2 class="section-title" id="work-title">Selected Work</h2>
 
-    <h1 class="name">Anthony Faustin</h1>
+    <div class="work-grid">
+      <article class="project-card">
+        <a class="project-link" href="projects/1948.html" aria-label="Open 1948">
+          <div class="project-image">
+            <img class="portrait" id="poster1948Thumb" src="img/1948_thumb.jpg" alt="1948 poster thumbnail" loading="lazy">
+          </div>
+          <div class="project-info">
+            <h3>1948</h3>
+            <div class="project-meta"><span class="project-type">Typography / Poster</span></div>
+          </div>
+        </a>
+      </article>
 
-    <div id="sf-time" class="time">06/17/2025 9:10pm SF</div>
+      <article class="project-card">
+        <a class="project-link" href="projects/themup.html" aria-label="Open The Mup">
+          <div class="project-image">
+            <img id="mupThumb" src="img/themup.gif" alt="The Mup thumbnail" loading="lazy">
+          </div>
+          <div class="project-info">
+            <h3>The Mup</h3>
+            <div class="project-meta"><span class="project-type">Web / Editorial</span></div>
+          </div>
+        </a>
+      </article>
 
-    <nav class="nav-links">
-      <a href="projects/projects.html" class="nav-link">projects</a><span class="arrow"> &gt;&lt; </span>
-      <a href="about/about.html" class="nav-link">about</a><span class="arrow"> &gt;&lt; </span>
-      <a href="mailto:anthonyfaustin14@gmail.com" class="nav-link">contact</a><span class="arrow"> &gt;&lt; </span>
-      <a href="inspo/inspo.html" class="nav-link">inspo</a>
-    </nav>      
+      <article class="project-card">
+        <a class="project-link" href="projects/bembo.html" aria-label="Open Bembo">
+          <div class="project-image">
+            <img class="portrait" id="bemboThumb" src="img/bembo_thumb.png" alt="Bembo thumbnail" loading="lazy">
+          </div>
+          <div class="project-info">
+            <h3>Bembo</h3>
+            <div class="project-meta"><span class="project-type">Identity / Type</span></div>
+          </div>
+        </a>
+      </article>
 
-    <div class="social-icons">
-      <a href="https://www.instagram.com/anthonyfaustin" target="_blank" aria-label="Instagram">
-        <img src="img/ig.png" alt="Instagram">
-      </a>
-      <a href="https://www.linkedin.com/in/anthonyfaustin14" target="_blank" aria-label="LinkedIn">
-        <img src="img/linkedin.png" alt="LinkedIn">
-      </a>
-      <a href="https://music.apple.com/profile/anthonyfaustin" target="_blank" aria-label="Apple Music">
-        <img src="img/music.png" alt="Apple Music">
-      </a>
-      <a href="https://github.com/anthonyfaustin14" target="_blank" aria-label="GitHub">
-        <img src="img/github.png" alt="GitHub">
-      </a>
+      <article class="project-card">
+        <a class="project-link" href="projects/thefog.html" aria-label="Open The Fog">
+          <div class="project-image">
+            <img id="thefogThumb" src="img/thefog.gif" alt="The Fog thumbnail" loading="lazy">
+          </div>
+          <div class="project-info">
+            <h3>The Fog</h3>
+            <div class="project-meta"><span class="project-type">Brand / Social</span></div>
+          </div>
+        </a>
+      </article>
+
+      <article class="project-card">
+        <a class="project-link" href="projects/ripdjscrew.html" aria-label="Open RIP DJ Screw">
+          <div class="project-image">
+            <img id="djscrewThumb" src="img/djscrew_purple_thumb.jpg" alt="DJ Screw poster thumbnail" loading="lazy">
+          </div>
+          <div class="project-info">
+            <h3>RIP DJ Screw</h3>
+            <div class="project-meta"><span class="project-type">Poster / Print</span></div>
+          </div>
+        </a>
+      </article>
+
+      <article class="project-card">
+        <a class="project-link" href="projects/anthology.html" aria-label="Open Design Anthology">
+          <div class="project-image anthology-wrapper" id="anthologyWrapper">
+            <img class="portrait" id="anthologyThumb" src="img/anthology_cover_thumb.jpg" alt="Design Anthology thumbnail" loading="lazy">
+          </div>
+          <div class="project-info">
+            <h3>Design Anthology</h3>
+            <div class="project-meta"><span class="project-type">Zine / Editorial</span></div>
+          </div>
+        </a>
+      </article>
     </div>
-  </div>
+  </section>
 
-  <script src="js/script.js"></script>
+
+  <section class="about-section" id="about" aria-labelledby="about-title">
+    <div class="about-content">
+      <h2 id="about-title" class="about-heading">Anthony Faustin</h2>
+
+      <!-- Headshot + copy -->
+      <div class="about-intro">
+        <figure class="about-headshot">
+          <img
+            src="img/headshot.JPG"
+            alt="Headshot of Anthony Faustin"
+            width="680"
+            height="1012"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+
+        <div class="about-copy">
+          <p class="about-bio">
+         I build identities and web systems with rhythm and restraint. Where clarity, culture, and tactility intersect. Based in Port St. Lucie, FL + open to remote and relocation.
+          </p>
+
+          <details class="bio-disclosure">
+            <summary>Read full bio</summary>
+            <p>
+             I’m a multidisciplinary designer from Port St. Lucie, Florida, and a graduate of the University of San Francisco. My work merges low-tech graphics, pixel rhythm, and raw texture to create designs that feel tactile, imperfect, and human. Across digital and brand systems, I build experiences that slow the scroll, spark curiosity, and invite exploration.
+             My process draws from music, photography, and nostalgic aesthetics, shaped by the quiet inspiration I find in Florida’s backroads, vintage shops, and late-night games with friends.
+            </p>
+          </details>
+        </div>
+      </div>
+
+      <div class="about-details">
+        <div class="detail-group">
+          <h3 class="detail-heading">Skills + Tools</h3>
+          <p class="detail-list"><strong class="skill-category">Design:</strong> Typography and Composition, Layout Design, Color Theory, Contrast Exploration, Storytelling, Visual Research</p>
+          <p class="detail-list"><strong class="skill-category">Technical:</strong> Adobe Creative Suite, Figma, HTML, CSS, p5.js, Version Control (Git/GitHub)</p>
+        </div>
+
+        <div class="detail-group">
+          <h3 class="detail-heading">Languages</h3>
+          <p class="detail-list">English, Haitian Creole</p>
+        </div>
+
+        <div class="detail-group contact-links">
+          <h3 class="detail-heading">Contact</h3>
+          <p class="detail-list">Email me: <a href="mailto:anthonyfaustin14@gmail.com">anthonyfaustin14@gmail.com</a></p>
+          <p class="detail-list">
+            <a href="https://drive.google.com/file/d/1HWtC8bs8ZAr2O1cylltYlWUjHskWIl_V/view?usp=sharing" target="_blank" class="resume-link">View Resume →</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Playground / Archive -->
+  <section class="archive-teaser" aria-labelledby="archive-teaser-title">
+    <div class="archive-teaser-inner">
+      <h2 id="archive-teaser-title">Playground</h2>
+      <p class="archive-teaser-copy">A living moodboard of references and cues behind my work.</p>
+      <div class="archive-teaser-strip">
+        <div class="teaser-thumb" style="background-image:url('./playground/play_img/wu.png')"></div>
+        <div class="teaser-thumb" style="background-image:url('./playground/play_img/motorola.png')"></div>
+        <div class="teaser-thumb" style="background-image:url('./playground/play_img/gracejones.png')"></div>
+        <div class="teaser-thumb" style="background-image:url('./playground/play_img/nintendo.png')"></div>
+      </div>
+      <a class="archive-button" href="playground/playground.html">Enter Playground →</a>
+    </div>
+  </section>
+
+<footer role="contentinfo">
+  <p>Thank you for taking the time to view my work (:</p>
+</footer>
+
+  <!-- JS -->
+  <script>
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('nav');
+    const navLinks = nav.querySelectorAll('a');
+    menuToggle?.addEventListener('click', () => nav.classList.toggle('active'));
+    navLinks.forEach(link => link.addEventListener('click', () => nav.classList.remove('active')));
+
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const href = a.getAttribute('href');
+        if (!href.startsWith('#')) return;
+        e.preventDefault();
+        const t = document.querySelector(href);
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    
+    function setupThumbnailHover(mainId, originalSrc, altSrcArray) {
+      const mainThumb = document.getElementById(mainId);
+      if (!mainThumb) return;
+      let interval;
+      let index = 0;
+
+      mainThumb.addEventListener("mouseenter", () => {
+        if (interval) return;
+        interval = setInterval(() => {
+          mainThumb.src = altSrcArray[index];
+          index = (index + 1) % altSrcArray.length;
+        }, 700);
+      });
+
+      mainThumb.addEventListener("mouseleave", () => {
+        clearInterval(interval);
+        interval = null;
+        mainThumb.src = originalSrc;
+        index = 0;
+      });
+    }
+
+    setupThumbnailHover("bemboThumb", "img/bembo_thumb.png", [
+      "img/me_look_bembo_thumb.png",
+      "img/bembo_logo1_thumb.png",
+      "img/bembo_logo2_thumb.png",
+      "img/bembo_ig_thumb.jpg"
+    ]);
+
+    setupThumbnailHover("mupThumb", "img/themup.gif", [
+      "img/themup_article_thumb.png",
+      "img/themup_about_thumb.png",
+      "img/themup_board_thumb.png",
+      "img/themup_bestnewmusic_thumb.png"
+    ]);
+
+    setupThumbnailHover("thefogThumb", "img/thefog.gif", [
+      "img/fogstream_thumb.png",
+      "img/fogstream_posts_thumb.png",
+      "img/tucker_thumb.png"
+    ]);
+
+    setupThumbnailHover("djscrewThumb", "img/djscrew_purple_thumb.jpg", [
+      "img/djscrew_green_thumb.jpg",
+      "img/djscrew_blue_thumb.jpg"
+    ]);
+
+    setupThumbnailHover("poster1948Thumb", "img/1948_thumb.jpg", [
+      "img/1948_mockup_thumb.jpg",
+      "img/1948_logo1_thumb.png",
+      "img/1948_logo2_thumb.png"
+    ]);
+
+  
+    (function () {
+      const wrapper = document.getElementById("anthologyWrapper");
+      const img = document.getElementById("anthologyThumb");
+      if (!wrapper || !img) return;
+
+      const frames = [
+        { src: "img/anthology_spread1_thumb.jpg", orient: "landscape" },
+        { src: "img/anthology_spread2_thumb.jpg", orient: "landscape" },
+        { src: "img/anthology_spread3_thumb.jpg", orient: "landscape" },
+        { src: "img/anthology_spread4_thumb.jpg", orient: "landscape" },
+        { src: "img/anthology_spread5_thumb.jpg", orient: "landscape" },
+        { src: "img/anthology_spread6_thumb.jpg", orient: "landscape" },
+        { src: "img/anthology_spread7_thumb.jpg", orient: "landscape" },
+        { src: "img/anthology_backcover_thumb.jpg", orient: "portrait" }
+      ];
+      const original = { src: "img/anthology_cover_thumb.jpg", orient: "portrait" };
+
+      let itv = null, i = 0;
+
+      function applyOrient(orient) {
+        img.classList.toggle("portrait", orient === "portrait");
+        img.classList.toggle("landscape", orient === "landscape");
+      }
+
+      
+      applyOrient(original.orient);
+
+     
+      wrapper.addEventListener("mouseenter", () => {
+        if (itv) return;
+        itv = setInterval(() => {
+          const frame = frames[i];
+          img.src = frame.src;
+          applyOrient(frame.orient);
+          i = (i + 1) % frames.length;
+        }, 700);
+      });
+
+      wrapper.addEventListener("mouseleave", () => {
+        clearInterval(itv); itv = null;
+        img.src = original.src;
+        applyOrient(original.orient);
+        i = 0;
+      });
+    })();
+  </script>
 </body>
 </html>
-
