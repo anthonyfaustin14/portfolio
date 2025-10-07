@@ -24,6 +24,7 @@
       </nav>
     </div>
   </header>
+  <div id="navBackdrop" class="nav-backdrop" aria-hidden="true"></div>
 
   <section class="work-section" id="work" aria-labelledby="work-title">
     <h2 class="section-title" id="work-title">Selected Work</h2>
@@ -60,7 +61,7 @@
           </div>
           <div class="project-info">
             <h3>Bembo</h3>
-            <div class="project-meta"><span class="project-type">Identity / Type</span></div>
+            <div class="project-meta"><span class="project-type">Typography / Poster</span></div>
           </div>
         </a>
       </article>
@@ -72,7 +73,7 @@
           </div>
           <div class="project-info">
             <h3>The Fog</h3>
-            <div class="project-meta"><span class="project-type">Brand / Social</span></div>
+            <div class="project-meta"><span class="project-type">Web / Social</span></div>
           </div>
         </a>
       </article>
@@ -103,12 +104,10 @@
     </div>
   </section>
 
-
   <section class="about-section" id="about" aria-labelledby="about-title">
     <div class="about-content">
       <h2 id="about-title" class="about-heading">Anthony Faustin</h2>
 
-      <!-- Headshot + copy -->
       <div class="about-intro">
         <figure class="about-headshot">
           <img
@@ -123,14 +122,13 @@
 
         <div class="about-copy">
           <p class="about-bio">
-         I build identities and web systems with rhythm and restraint. Where clarity, culture, and tactility intersect. Based in Port St. Lucie, FL + open to remote and relocation.
+            I build identities and web systems with rhythm and restraint. Where clarity, culture, and tactility intersect. Based in Port St. Lucie, FL + open to remote and relocation.
           </p>
 
           <details class="bio-disclosure">
             <summary>Read full bio</summary>
             <p>
-             I’m a multidisciplinary designer from Port St. Lucie, Florida, and a graduate of the University of San Francisco. My work merges low-tech graphics, pixel rhythm, and raw texture to create designs that feel tactile, imperfect, and human. Across digital and brand systems, I build experiences that slow the scroll, spark curiosity, and invite exploration.
-             My process draws from music, photography, and nostalgic aesthetics, shaped by the quiet inspiration I find in Florida’s backroads, vintage shops, and late-night games with friends.
+              I’m a multidisciplinary designer from Port St. Lucie, Florida, and a graduate of the University of San Francisco. My work merges low-tech graphics, pixel rhythm, and raw texture to create designs that feel tactile, imperfect, and human. Across digital and brand systems, I build experiences that slow the scroll, spark curiosity, and invite exploration. My process draws from music, photography, and nostalgic aesthetics, shaped by the quiet inspiration I find in Florida’s backroads, vintage shops, and late-night games with friends.
             </p>
           </details>
         </div>
@@ -174,103 +172,91 @@
     </div>
   </section>
 
-<footer role="contentinfo">
-  <p>Thank you for taking the time to view my work (:</p>
-</footer>
+  <footer role="contentinfo">
+    <p>Thank you for taking the time to view my work (:</p>
+  </footer>
 
-  <!-- JS -->
+  <script>
+    const menuToggle  = document.getElementById('menuToggle');
+    const nav         = document.getElementById('nav');
+    const navBackdrop = document.getElementById('navBackdrop');
+
+    function openNav(){
+      nav.classList.add('active');
+      document.body.classList.add('nav-open');
+      navBackdrop.setAttribute('aria-hidden','false');
+    }
+    function closeNav(){
+      nav.classList.remove('active');
+      document.body.classList.remove('nav-open');
+      navBackdrop.setAttribute('aria-hidden','true');
+    }
+    function toggleNav(){
+      if (nav.classList.contains('active')) closeNav(); else openNav();
+    }
+
+    menuToggle?.addEventListener('click', toggleNav);
+    navBackdrop?.addEventListener('click', closeNav);
+    nav?.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') closeNav();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeNav();
+    });
+
+    let rT;
+    window.addEventListener('resize', () => {
+      clearTimeout(rT);
+      rT = setTimeout(() => {
+        if (window.innerWidth > 768) closeNav();
+      }, 120);
+    });
+  </script>
+
   <script>
     // --- Utilities ---
-    function preload(srcs = []) {
-      srcs.forEach(src => { const img = new Image(); img.src = src; });
-    }
-  
+    function preload(srcs = []) { srcs.forEach(src => { const img = new Image(); img.src = src; }); }
     function fadeSwap(img, newSrc) {
       if (!img) return;
-      const restore = () => {
-        img.style.opacity = '1';
-        img.removeEventListener('load', restore);
-      };
-      img.style.opacity = '0';
-      img.addEventListener('load', restore, { once: true });
-      img.src = newSrc;
+      const restore = () => { img.style.opacity = '1'; img.removeEventListener('load', restore); };
+      img.style.opacity = '0'; img.addEventListener('load', restore, { once: true }); img.src = newSrc;
     }
-  
-    // Generic hover cycler (with fade + preload)
     function setupThumbnailHover(mainId, originalSrc, altSrcArray) {
       const mainThumb = document.getElementById(mainId);
       if (!mainThumb) return;
-  
-      // Preload frames to avoid flicker
       preload(altSrcArray);
-  
-      let interval = null;
-      let index = 0;
-  
+      let interval = null, index = 0;
       const start = () => {
         if (interval) return;
-        interval = setInterval(() => {
-          fadeSwap(mainThumb, altSrcArray[index]);
-          index = (index + 1) % altSrcArray.length;
-        }, 700);
+        interval = setInterval(() => { fadeSwap(mainThumb, altSrcArray[index]); index = (index + 1) % altSrcArray.length; }, 700);
       };
-  
-      const stop = () => {
-        if (interval) { clearInterval(interval); interval = null; }
-        index = 0;
-        fadeSwap(mainThumb, originalSrc);
-      };
-  
+      const stop = () => { if (interval) { clearInterval(interval); interval = null; } index = 0; fadeSwap(mainThumb, originalSrc); };
       mainThumb.addEventListener('mouseenter', start);
       mainThumb.addEventListener('mouseleave', stop);
-      // Keyboard accessibility
       mainThumb.addEventListener('focus', start);
       mainThumb.addEventListener('blur', stop);
-  
-      // Clean up if user switches tabs mid-hover
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) stop();
-      });
+      document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
     }
-  
-    // --- Project thumbs present on the page ---
     setupThumbnailHover("bemboThumb", "img/bembo_thumb.png", [
-      "img/me_look_bembo_thumb.png",
-      "img/bembo_logo1_thumb.png",
-      "img/bembo_logo2_thumb.png",
-      "img/bembo_ig_thumb.jpg"
+      "img/me_look_bembo_thumb.png","img/bembo_logo1_thumb.png","img/bembo_logo2_thumb.png","img/bembo_ig_thumb.jpg"
     ]);
-  
     setupThumbnailHover("mupThumb", "img/themup.gif", [
-      "img/themup_article_thumb.png",
-      "img/themup_about_thumb.png",
-      "img/themup_board_thumb.png",
-      "img/themup_bestnewmusic_thumb.png"
+      "img/themup_article_thumb.png","img/themup_about_thumb.png","img/themup_board_thumb.png","img/themup_bestnewmusic_thumb.png"
     ]);
-  
     setupThumbnailHover("thefogThumb", "img/thefog.gif", [
-      "img/fogstream_thumb.png",
-      "img/fogstream_posts_thumb.png",
-      "img/tucker_thumb.png"
+      "img/fogstream_thumb.png","img/fogstream_posts_thumb.png","img/tucker_thumb.png"
     ]);
-  
     setupThumbnailHover("djscrewThumb", "img/djscrew_purple_thumb.jpg", [
-      "img/djscrew_green_thumb.jpg",
-      "img/djscrew_blue_thumb.jpg"
+      "img/djscrew_green_thumb.jpg","img/djscrew_blue_thumb.jpg"
     ]);
-  
     setupThumbnailHover("poster1948Thumb", "img/1948_thumb.jpg", [
-      "img/1948_mockup_thumb.jpg",
-      "img/1948_logo1_thumb.png",
-      "img/1948_logo2_thumb.png"
+      "img/1948_mockup_thumb.jpg","img/1948_logo1_thumb.png","img/1948_logo2_thumb.png"
     ]);
-  
-    // --- Anthology (custom: orientation + smoother fades) ---
+
     (function () {
       const wrapper = document.getElementById("anthologyWrapper");
       const img = document.getElementById("anthologyThumb");
       if (!wrapper || !img) return;
-  
       const frames = [
         { src: "img/anthology_spread1_thumb.jpg", orient: "landscape" },
         { src: "img/anthology_spread2_thumb.jpg", orient: "landscape" },
@@ -282,20 +268,15 @@
         { src: "img/anthology_backcover_thumb.jpg", orient: "portrait" }
       ];
       const original = { src: "img/anthology_cover_thumb.jpg", orient: "portrait" };
-  
-      // Preload all anthology frames for smooth swaps
       preload([original.src, ...frames.map(f => f.src)]);
-  
       let itv = null, i = 0;
-  
+
       function setOrient(orient) {
         img.classList.toggle("portrait",  orient === "portrait");
         img.classList.toggle("landscape", orient === "landscape");
       }
-  
-      // Initialize
       setOrient(original.orient);
-  
+
       const start = () => {
         if (itv) return;
         itv = setInterval(() => {
@@ -305,24 +286,16 @@
           i = (i + 1) % frames.length;
         }, 700);
       };
-  
       const stop = () => {
         if (itv) { clearInterval(itv); itv = null; }
-        i = 0;
-        setOrient(original.orient);
-        fadeSwap(img, original.src);
+        i = 0; setOrient(original.orient); fadeSwap(img, original.src);
       };
-  
       wrapper.addEventListener("mouseenter", start);
       wrapper.addEventListener("mouseleave", stop);
-      // Keyboard accessibility
       wrapper.addEventListener("focusin", start);
       wrapper.addEventListener("focusout", stop);
-  
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) stop();
-      });
+      document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
     })();
-  </script>  
+  </script>
 </body>
 </html>

@@ -40,6 +40,8 @@ body{
   letter-spacing:-.01em;
   overflow-x:hidden;
 }
+body.nav-open { overflow:hidden; } 
+
 h1,h2,h3,h4,h5,h6,.logo{font-family:inherit; letter-spacing:-.02em}
 
 .site-header{
@@ -64,9 +66,24 @@ nav a{
   transition:color var(--speed) ease;
 }
 nav a:hover{color:var(--color-green)}
-.menu-toggle{display:none; background:none; border:0; width:24px; height:24px; position:relative; cursor:pointer}
-.menu-toggle span{display:block; width:24px; height:2px; background:var(--text); position:absolute; left:0; transition:all var(--speed)}
-.menu-toggle span:nth-child(1){top:6px} .menu-toggle span:nth-child(2){top:11px} .menu-toggle span:nth-child(3){top:16px}
+
+/* Hamburger button */
+.menu-toggle{
+  display:none; background:none; border:0; width:32px; height:32px; position:relative; cursor:pointer;
+  z-index:1002;
+}
+.menu-toggle span{
+  display:block; width:24px; height:2px; background:var(--text); position:absolute; left:4px; transition:transform var(--speed), opacity var(--speed), top var(--speed);
+}
+.menu-toggle span:nth-child(1){top:8px}
+.menu-toggle span:nth-child(2){top:15px}
+.menu-toggle span:nth-child(3){top:22px}
+
+/* animate to X when open */
+body.nav-open .menu-toggle span:nth-child(1){ top:15px; transform:rotate(45deg) }
+body.nav-open .menu-toggle span:nth-child(2){ opacity:0 }
+body.nav-open .menu-toggle span:nth-child(3){ top:15px; transform:rotate(-45deg) }
+
 nav{transition:right var(--speed)}
 
 /* Work */
@@ -83,15 +100,13 @@ nav{transition:right var(--speed)}
 .project-card:hover{transform:translateY(-4px)}
 .project-link{display:block; text-decoration:none; color:inherit}
 
-.project-image{
-  position:relative; display:block;
-}
+.project-image{ position:relative; display:block; }
 .project-image img{
   width:100%; height:100%;
   aspect-ratio:4/3; 
   object-fit:cover; display:block;
   border-radius:var(--radius); box-shadow:var(--shadow); background:#eee;
-  transition: transform var(--speed), filter var(--speed), outline var(--speed), aspect-ratio var(--speed), object-fit var(--speed), background-color var(--speed);
+  transition: transform var(--speed), filter var(--speed), outline var(--speed), aspect-ratio var(--speed), object-fit var(--speed), background-color var(--speed), opacity var(--speed);
 }
 .project-image img.portrait{ aspect-ratio:3/4; }
 .project-image img.landscape{ aspect-ratio:4/3; }
@@ -105,8 +120,8 @@ nav{transition:right var(--speed)}
   position:relative;
   display:block;
   width:100%;
-  aspect-ratio:3/4;              
-  background:var(--paper);       
+  aspect-ratio:3/4;
+  background:var(--paper);
   border-radius:var(--radius);
   box-shadow:var(--shadow);
   overflow:hidden;
@@ -114,11 +129,10 @@ nav{transition:right var(--speed)}
 .anthology-wrapper img{
   position:absolute; inset:0; width:100%; height:100%;
   border-radius:inherit; box-shadow:none;
-  background:#fff;             
+  background:#fff;
 }
-
-.anthology-wrapper img.portrait{ object-fit:cover; }    
-.anthology-wrapper img.landscape{ object-fit:contain; } 
+.anthology-wrapper img.portrait{ object-fit:cover; }
+.anthology-wrapper img.landscape{ object-fit:contain; }
 
 .project-info{padding-top:1rem}
 .project-info h3{
@@ -146,25 +160,19 @@ nav{transition:right var(--speed)}
   align-items:start;
   margin:0 0 2.5rem;
 }
-
 @media (min-width: 900px){
-  .about-intro{
-    grid-template-columns: minmax(220px, 320px) 1fr;
-  }
+  .about-intro{ grid-template-columns: minmax(220px, 320px) 1fr; }
 }
 .about-headshot{ margin:0; }
 .about-headshot img{
   display:block;
   width:100%;
-  height:auto;                
+  height:auto;
   border-radius:var(--radius);
   box-shadow:var(--shadow);
   background:#fff;
 }
-.about-copy .about-bio{
-  margin:0 0 1.25rem;
-}
-
+.about-copy .about-bio{ margin:0 0 1.25rem; }
 .about-bio{ font-size:1.15rem; line-height:1.9; color:var(--color-grey); max-width:700px; }
 
 .bio-disclosure{
@@ -175,38 +183,15 @@ nav{transition:right var(--speed)}
   max-width: 72ch;
   margin: 0 0 2rem;
 }
+.archive-button { color: #7B9A2E; border-bottom: 1px solid #7B9A2E; }
+.archive-button:visited { color: #7B9A2E; }
+.archive-button:hover { opacity: 0.85; border-bottom-color: #7B9A2E; }
 
-.archive-button {
-  color: #7B9A2E;
-  border-bottom: 1px solid #7B9A2E;
-}
+.detail-group .resume-link { color: #7B9A2E; border-bottom: 1px solid #7B9A2E; }
+.detail-group .resume-link:visited { color: #7B9A2E; }
+.detail-group .resume-link:hover { opacity: 0.85; border-bottom-color: #7B9A2E; }
 
-.archive-button:visited {
-  color: #7B9A2E;
-}
-
-.archive-button:hover {
-  opacity: 0.85;
-  border-bottom-color: #7B9A2E;
-}
-
-.detail-group .resume-link {
-  color: #7B9A2E;
-  border-bottom: 1px solid #7B9A2E;
-}
-
-.detail-group .resume-link:visited {
-  color: #7B9A2E;
-}
-
-.detail-group .resume-link:hover {
-  opacity: 0.85;
-  border-bottom-color: #7B9A2E;
-}
-
-.bio-disclosure > summary{
-  cursor:pointer; list-style:none; font-size:.95rem; color: var(--color-purple); user-select:none;
-}
+.bio-disclosure > summary{ cursor:pointer; list-style:none; font-size:.95rem; color: var(--color-purple); user-select:none; }
 .bio-disclosure > summary::-webkit-details-marker{ display:none; }
 .bio-disclosure > summary::after{ content:" +"; color: var(--color-grey); }
 .bio-disclosure[open] > summary::after{ content:" −"; }
@@ -245,18 +230,26 @@ nav{transition:right var(--speed)}
 .teaser-thumb:hover{ transform:translateY(-3px); filter:brightness(1.02); box-shadow:0 6px 15px rgba(0,0,0,.1) }
 .archive-button{ display:inline-block; text-decoration:none; color:var(--color-purple); border-bottom:1px solid currentColor; padding-bottom:2px; font-size:1.05rem }
 
-/* Footer */
 footer{ padding:3rem 4%; border-top:1px solid var(--line); text-align:center; color:var(--muted); font-size:.9rem }
 
-/* Responsive */
+.nav-scrim{
+  position:fixed; inset:0; background:rgba(0,0,0,.28);
+  z-index:1000;
+  opacity:0; pointer-events:none; transition:opacity var(--speed);
+}
+body.nav-open .nav-scrim{ opacity:1; pointer-events:auto; }
+
 @media (max-width:768px){
   .site-header .header-content{ padding:12px 5% }
   .menu-toggle{ display:block }
+
   nav{
     position:fixed; top:0; right:-100%; width:80%; max-width:300px; height:100vh; background:#fff;
     padding:6rem 2rem 2rem; border-left:1px solid var(--line);
+    z-index:1001; transition:right var(--speed) ease;
   }
   nav.active{ right:0 }
+
   nav ul{ flex-direction:column; gap:2rem }
   nav a{ font-size:1.1rem }
 
