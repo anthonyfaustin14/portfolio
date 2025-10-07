@@ -180,87 +180,97 @@
 
   <!-- JS -->
   <script>
-    // Mobile menu
-    const menuToggle = document.getElementById('menuToggle');
-    const nav = document.getElementById('nav');
-    const navLinks = nav.querySelectorAll('a');
-    menuToggle?.addEventListener('click', () => nav.classList.toggle('active'));
-    navLinks.forEach(link => link.addEventListener('click', () => nav.classList.remove('active')));
-
-
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const href = a.getAttribute('href');
-        if (!href.startsWith('#')) return;
-        e.preventDefault();
-        const t = document.querySelector(href);
-        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
-
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    
+    // --- Utilities ---
+    function preload(srcs = []) {
+      srcs.forEach(src => { const img = new Image(); img.src = src; });
+    }
+  
+    function fadeSwap(img, newSrc) {
+      if (!img) return;
+      const restore = () => {
+        img.style.opacity = '1';
+        img.removeEventListener('load', restore);
+      };
+      img.style.opacity = '0';
+      img.addEventListener('load', restore, { once: true });
+      img.src = newSrc;
+    }
+  
+    // Generic hover cycler (with fade + preload)
     function setupThumbnailHover(mainId, originalSrc, altSrcArray) {
       const mainThumb = document.getElementById(mainId);
       if (!mainThumb) return;
-      let interval;
+  
+      // Preload frames to avoid flicker
+      preload(altSrcArray);
+  
+      let interval = null;
       let index = 0;
-
-      mainThumb.addEventListener("mouseenter", () => {
+  
+      const start = () => {
         if (interval) return;
         interval = setInterval(() => {
-          mainThumb.src = altSrcArray[index];
+          fadeSwap(mainThumb, altSrcArray[index]);
           index = (index + 1) % altSrcArray.length;
         }, 700);
-      });
-
-      mainThumb.addEventListener("mouseleave", () => {
-        clearInterval(interval);
-        interval = null;
-        mainThumb.src = originalSrc;
+      };
+  
+      const stop = () => {
+        if (interval) { clearInterval(interval); interval = null; }
         index = 0;
+        fadeSwap(mainThumb, originalSrc);
+      };
+  
+      mainThumb.addEventListener('mouseenter', start);
+      mainThumb.addEventListener('mouseleave', stop);
+      // Keyboard accessibility
+      mainThumb.addEventListener('focus', start);
+      mainThumb.addEventListener('blur', stop);
+  
+      // Clean up if user switches tabs mid-hover
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stop();
       });
     }
-
+  
+    // --- Project thumbs present on the page ---
     setupThumbnailHover("bemboThumb", "img/bembo_thumb.png", [
       "img/me_look_bembo_thumb.png",
       "img/bembo_logo1_thumb.png",
       "img/bembo_logo2_thumb.png",
       "img/bembo_ig_thumb.jpg"
     ]);
-
+  
     setupThumbnailHover("mupThumb", "img/themup.gif", [
       "img/themup_article_thumb.png",
       "img/themup_about_thumb.png",
       "img/themup_board_thumb.png",
       "img/themup_bestnewmusic_thumb.png"
     ]);
-
+  
     setupThumbnailHover("thefogThumb", "img/thefog.gif", [
       "img/fogstream_thumb.png",
       "img/fogstream_posts_thumb.png",
       "img/tucker_thumb.png"
     ]);
-
+  
     setupThumbnailHover("djscrewThumb", "img/djscrew_purple_thumb.jpg", [
       "img/djscrew_green_thumb.jpg",
       "img/djscrew_blue_thumb.jpg"
     ]);
-
+  
     setupThumbnailHover("poster1948Thumb", "img/1948_thumb.jpg", [
       "img/1948_mockup_thumb.jpg",
       "img/1948_logo1_thumb.png",
       "img/1948_logo2_thumb.png"
     ]);
-
   
+    // --- Anthology (custom: orientation + smoother fades) ---
     (function () {
       const wrapper = document.getElementById("anthologyWrapper");
       const img = document.getElementById("anthologyThumb");
       if (!wrapper || !img) return;
-
+  
       const frames = [
         { src: "img/anthology_spread1_thumb.jpg", orient: "landscape" },
         { src: "img/anthology_spread2_thumb.jpg", orient: "landscape" },
@@ -272,35 +282,47 @@
         { src: "img/anthology_backcover_thumb.jpg", orient: "portrait" }
       ];
       const original = { src: "img/anthology_cover_thumb.jpg", orient: "portrait" };
-
+  
+      // Preload all anthology frames for smooth swaps
+      preload([original.src, ...frames.map(f => f.src)]);
+  
       let itv = null, i = 0;
-
-      function applyOrient(orient) {
-        img.classList.toggle("portrait", orient === "portrait");
+  
+      function setOrient(orient) {
+        img.classList.toggle("portrait",  orient === "portrait");
         img.classList.toggle("landscape", orient === "landscape");
       }
-
-      
-      applyOrient(original.orient);
-
-     
-      wrapper.addEventListener("mouseenter", () => {
+  
+      // Initialize
+      setOrient(original.orient);
+  
+      const start = () => {
         if (itv) return;
         itv = setInterval(() => {
           const frame = frames[i];
-          img.src = frame.src;
-          applyOrient(frame.orient);
+          setOrient(frame.orient);
+          fadeSwap(img, frame.src);
           i = (i + 1) % frames.length;
         }, 700);
-      });
-
-      wrapper.addEventListener("mouseleave", () => {
-        clearInterval(itv); itv = null;
-        img.src = original.src;
-        applyOrient(original.orient);
+      };
+  
+      const stop = () => {
+        if (itv) { clearInterval(itv); itv = null; }
         i = 0;
+        setOrient(original.orient);
+        fadeSwap(img, original.src);
+      };
+  
+      wrapper.addEventListener("mouseenter", start);
+      wrapper.addEventListener("mouseleave", stop);
+      // Keyboard accessibility
+      wrapper.addEventListener("focusin", start);
+      wrapper.addEventListener("focusout", stop);
+  
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stop();
       });
     })();
-  </script>
+  </script>  
 </body>
 </html>

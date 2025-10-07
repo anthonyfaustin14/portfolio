@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/bembo.css" />
 </head>
-
 <body>
   <header class="site-header">
     <div class="header-content">
@@ -27,8 +26,8 @@
     </div>
   </header>
 
-  <!-- Backdrop for mobile nav (click to close) -->
   <div id="navBackdrop" class="nav-backdrop" aria-hidden="true"></div>
+
   <div class="project-nav-dropdown-wrapper" aria-label="Project switcher">
     <button id="dropdown-toggle" class="dropdown-toggle" aria-expanded="false" aria-controls="project-menu" title="Show other projects">v</button>
     <div id="project-menu" class="project-menu" role="menu" aria-label="Other projects">
@@ -41,11 +40,10 @@
       <a href="thefog.html" class="project-menu-item" role="menuitem" aria-label="Open The Fog">
         <img src="../img/thefog.gif" alt="The Fog thumbnail" class="project-menu-thumb" />
       </a>
-      <a href="1948.html" class="project-menu-item portrait" role="menuitem" aria-label="Open 1948 (portrait)">
+      <a href="1948.html" class="project-menu-item portrait" role="menuitem" aria-label="Open 1948">
         <img src="../img/1948_thumb.jpg" alt="1948 thumbnail (portrait)" class="project-menu-thumb" />
       </a>
-      <!-- CURRENT PAGE -->
-      <a href="bembo.html" class="project-menu-item current portrait" role="menuitem" aria-current="page" aria-label="Current project: Bembo (portrait)">
+      <a href="bembo.html" class="project-menu-item current portrait" role="menuitem" aria-current="page" aria-label="Current project: Bembo">
         <img src="../img/bembo_thumb.png" alt="Bembo thumbnail (portrait)" class="project-menu-thumb" />
       </a>
       <a href="anthology.html" class="project-menu-item" role="menuitem" aria-label="Open Design Anthology">
@@ -53,40 +51,38 @@
       </a>
     </div>
   </div>
-  
+
   <main class="project-page" id="main">
     <h1 class="page-title">Bembo</h1>
 
-    <section class="bembo-wrapper" aria-labelledby="galleryTitle">
+    <section class="projectBembo-wrapper" aria-labelledby="galleryTitle">
       <h2 id="galleryTitle" class="sr-only">Gallery</h2>
 
-      <div class="bembo-gallery">
-        <!-- Main image -->
+      <div class="projectBembo-gallery">
+       
         <img
           src="../img/bembo_thumb.png"
           alt="Bembo Poster"
-          class="bembo-main"
-          id="bemboMainImage"
+          class="projectBembo-main"
+          id="projectBemboMainImage"
           tabindex="0"
         />
 
-        <!-- Side thumbs -->
-        <div class="bembo-side-images">
-          <img src="../img/bembo_thumb.png" alt='Bembo 30" x 40"' class="bembo-side"
+        <div class="projectBembo-side-images">
+          <img src="../img/bembo_thumb.png" alt='Bembo 30" x 40"' class="projectBembo-side"
                data-original-src="../img/bembo_thumb.png" data-caption='Bembo 30" x 40"' />
-          <img src="../img/me_look_bembo_thumb.png" alt="Bembo inside of the University of San Francisco Thacher Gallery" class="bembo-side"
+          <img src="../img/me_look_bembo_thumb.png" alt="Bembo inside of the University of San Francisco Thacher Gallery" class="projectBembo-side"
                data-original-src="../img/me_look_bembo_thumb.png" data-caption="Bembo inside of the University of San Francisco Thacher Gallery" />
-          <img src="../img/bembo_logo1_thumb.png" alt="Bembo alternative logo #1" class="bembo-side"
+          <img src="../img/bembo_logo1_thumb.png" alt="Bembo alternative logo #1" class="projectBembo-side"
                data-original-src="../img/bembo_logo1_thumb.png" data-caption="Bembo alternative logo #1" />
-          <img src="../img/bembo_logo2_thumb.png" alt="Bembo alternative logo #2" class="bembo-side"
+          <img src="../img/bembo_logo2_thumb.png" alt="Bembo alternative logo #2" class="projectBembo-side"
                data-original-src="../img/bembo_logo2_thumb.png" data-caption="Bembo alternative logo #2" />
+          <img src="../img/bembo_ig_thumb.jpg" alt="Bembo posted on the Thacher Gallery Instagram page." class="projectBembo-side"
+               data-original-src="../img/bembo_ig_thumb.jpg" data-caption="Bembo posted on the Thacher Gallery Instagram page." />
         </div>
-
-        <img src="../img/bembo_ig_thumb.jpg" alt="Bembo posted on the Thacher Gallery Instagram page." class="bembo-side"
-             data-original-src="../img/bembo_ig_thumb.jpg" data-caption="Bembo posted on the Thacher Gallery Instagram page." />
       </div>
 
-      <div class="gallery-caption-container" aria-live="polite">
+      <div id="galleryCaptionContainer" class="gallery-caption-container" aria-live="polite">
         <p id="dynamicCaption" class="photo-desc-display"></p>
       </div>
 
@@ -105,93 +101,81 @@
     </section>
   </main>
 
-  <!-- Fullscreen overlay -->
   <div class="overlay" id="imageOverlay" aria-hidden="true" role="dialog" aria-label="Image viewer">
     <img src="" alt="" class="overlay-image" id="overlayImage" />
   </div>
 
   <script>
-    // ===== Mobile menu with backdrop & safe close =====
+   
     const menuToggle   = document.getElementById('menuToggle');
     const nav          = document.getElementById('nav');
     const navLinks     = nav?.querySelectorAll('a') || [];
     const navBackdrop  = document.getElementById('navBackdrop');
-    const projectMenu  = document.getElementById('project-menu'); 
+    const projectMenu  = document.getElementById('project-menu'); // may not exist on all pages
 
     function openNav(){
       nav.classList.add('active');
       document.body.classList.add('nav-open');
-     
       if (projectMenu){ projectMenu.classList.remove('active'); }
     }
-
     function closeNav(){
       nav.classList.remove('active');
       document.body.classList.remove('nav-open');
     }
-
     function toggleNav(){
       if (nav.classList.contains('active')) { closeNav(); } else { openNav(); }
     }
-
     menuToggle?.addEventListener('click', toggleNav);
     navBackdrop?.addEventListener('click', closeNav);
     navLinks.forEach(link => link.addEventListener('click', closeNav));
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNav(); });
 
-    // ===== Project dropdown =====
     const dropdownToggle = document.getElementById('dropdown-toggle');
-
     function closeDropdown(){
       projectMenu.classList.remove('active');
       dropdownToggle.textContent = 'v';
       dropdownToggle.setAttribute('aria-expanded', 'false');
     }
-
     dropdownToggle.addEventListener('click', (e) => {
       const active = projectMenu.classList.toggle('active');
       dropdownToggle.textContent = active ? 'ʌ' : 'v';
       dropdownToggle.setAttribute('aria-expanded', String(active));
       e.stopPropagation();
     });
-
     document.addEventListener('click', (event) => {
-      if (!event.target.closest('.project-nav-dropdown-wrapper')) {
-        closeDropdown();
-      }
+      if (!event.target.closest('.project-nav-dropdown-wrapper')) closeDropdown();
     });
-
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') closeDropdown();
     });
 
-    const bemboMainImage = document.getElementById('bemboMainImage');
-    const bemboSideImages = document.querySelectorAll('.bembo-side');
-    const imageOverlay = document.getElementById('imageOverlay');
-    const overlayImage = document.getElementById('overlayImage');
+   
+    const projectBemboMainImage  = document.getElementById('projectBemboMainImage');
+    const projectBemboSideImages = document.querySelectorAll('.projectBembo-side');
+    const imageOverlay   = document.getElementById('imageOverlay');
+    const overlayImage   = document.getElementById('overlayImage');
     const dynamicCaption = document.getElementById('dynamicCaption');
 
-    const initial = document.querySelector('.bembo-side');
+
+    const initial = document.querySelector('.projectBembo-side');
     if (initial?.dataset?.caption){
       dynamicCaption.textContent = initial.dataset.caption;
       dynamicCaption.style.opacity = '1';
     }
 
-   
-    bemboSideImages.forEach(sideImage => {
-      sideImage.addEventListener('mouseenter', () => {
-        bemboMainImage.src = sideImage.getAttribute('data-original-src') || sideImage.src;
+    
+    projectBemboSideImages.forEach(sideImage => {
+      const show = () => {
+        projectBemboMainImage.src = sideImage.getAttribute('data-original-src') || sideImage.src;
         const captionText = sideImage.dataset.caption || '';
         dynamicCaption.textContent = captionText;
         dynamicCaption.style.opacity = captionText ? '1' : '0';
-      });
-      sideImage.addEventListener('focus', () => {
-        bemboMainImage.src = sideImage.getAttribute('data-original-src') || sideImage.src;
-        dynamicCaption.textContent = sideImage.dataset.caption || '';
-        dynamicCaption.style.opacity = '1';
-      });
+      };
+      sideImage.addEventListener('mouseenter', show);
+      sideImage.addEventListener('focus', show);
     });
 
+    
     function openOverlay(src, alt){
       overlayImage.src = src;
       overlayImage.alt = alt || '';
@@ -204,14 +188,15 @@
       overlayImage.src = '';
       overlayImage.alt = '';
     }
-    bemboMainImage.addEventListener('click', () => openOverlay(bemboMainImage.src, bemboMainImage.alt));
-    bemboMainImage.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openOverlay(bemboMainImage.src, bemboMainImage.alt); }
+    projectBemboMainImage.addEventListener('click', () => openOverlay(projectBemboMainImage.src, projectBemboMainImage.alt));
+    projectBemboMainImage.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openOverlay(projectBemboMainImage.src, projectBemboMainImage.alt); }
     });
+
     imageOverlay.addEventListener('click', closeOverlay);
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeOverlay(); });
 
-    // Close nav if resized 
+   
     let resizeTimer;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
